@@ -45,12 +45,13 @@ export default function AboutPage() {
   return (
     <>
       {/* Page header */}
-      <section className="bg-navy text-white">
+      <section style={{ backgroundColor: "var(--color-navy)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
-          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-            About
-          </h1>
-          <p className="mt-4 text-slate-lighter text-lg max-w-2xl leading-relaxed">
+          <h1 style={{ color: "white" }}>About</h1>
+          <p
+            className="text-sm mt-4 max-w-2xl leading-relaxed"
+            style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
+          >
             Groundwork Technology Advisors is a technology consulting firm
             founded by a senior technology executive with 30 years of experience
             leading IT and engineering organizations across healthcare services,
@@ -60,9 +61,12 @@ export default function AboutPage() {
       </section>
 
       {/* Intro */}
-      <section className="bg-white">
+      <section style={{ backgroundColor: "white" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <div className="max-w-3xl space-y-5 text-charcoal leading-relaxed">
+          <div
+            className="text-sm max-w-3xl space-y-5 leading-relaxed"
+            style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)" }}
+          >
             <p>
               The firm's principal has served as CIO or CTO at eight
               organizations over a 30-year career, with engineering and
@@ -82,33 +86,39 @@ export default function AboutPage() {
             </p>
             <p>
               Credentials include CHIME certification as a Healthcare CIO,
-              Information Security Leader, and Digital Health Executive, and a
-              master's degree in Engineering and Technology Management.
+              Information Security Leader, and Digital Health Executive, a
+              master's degree in Engineering and Technology Management, and the
+              Chief AI Officer certification (AI CERTs, in progress).
             </p>
           </div>
         </div>
       </section>
 
       {/* Experience by service area */}
-      <section className="bg-off-white">
+      <section style={{ backgroundColor: "var(--color-pale)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <h2 className="text-navy text-2xl sm:text-3xl font-semibold tracking-tight mb-12">
-            Experience across each service area
-          </h2>
+          <h2 className="mb-12">Experience across each service area</h2>
           <div className="space-y-10">
             {experience.map((item, index) => (
               <div
                 key={item.service}
                 className={`grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-16 ${
-                  index < experience.length - 1
-                    ? "pb-10 border-b border-slate-lighter"
-                    : ""
+                  index < experience.length - 1 ? "pb-10" : ""
                 }`}
+                style={
+                  index < experience.length - 1
+                    ? { borderBottom: "0.5px solid #d8e4ef" }
+                    : {}
+                }
               >
-                <h3 className="text-navy font-semibold text-base leading-snug">
-                  {item.service}
-                </h3>
-                <p className="lg:col-span-2 text-charcoal text-sm leading-relaxed">
+                <h3>{item.service}</h3>
+                <p
+                  className="text-sm lg:col-span-2 leading-relaxed"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "var(--color-charcoal)",
+                  }}
+                >
                   {item.detail}
                 </p>
               </div>
@@ -118,13 +128,14 @@ export default function AboutPage() {
       </section>
 
       {/* Why the firm exists */}
-      <section className="bg-white">
+      <section style={{ backgroundColor: "white" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="max-w-3xl">
-            <h2 className="text-navy text-2xl sm:text-3xl font-semibold tracking-tight mb-6">
-              Why Groundwork Technology Advisors exists
-            </h2>
-            <div className="space-y-5 text-charcoal leading-relaxed">
+            <h2 className="mb-6">Why Groundwork Technology Advisors exists</h2>
+            <div
+              className="text-sm space-y-5 leading-relaxed"
+              style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)" }}
+            >
               <p>
                 Many small and mid-size companies are making technology
                 decisions without a clear picture of where they stand today or a
@@ -134,9 +145,9 @@ export default function AboutPage() {
               <p>
                 That is what Groundwork Technology Advisors is designed to
                 provide. The firm works with a small number of clients at a time
-                and structures engagements around specific deliverables—a
+                and structures engagements around specific deliverables: a
                 written assessment, a practical roadmap, or consistent senior
-                leadership on a retainer basis—rather than open-ended
+                leadership on a retainer basis. Not open-ended
                 relationships that extend beyond their useful life.
               </p>
             </div>

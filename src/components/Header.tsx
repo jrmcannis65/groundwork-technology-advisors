@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services/", label: "Services" },
+  { href: "/how-we-work/", label: "How we work" },
   { href: "/about/", label: "About" },
   { href: "/engagement-models/", label: "Engagement Models" },
+  { href: "/perspectives/", label: "Perspectives" },
   { href: "/contact/", label: "Contact" },
 ];
 
@@ -16,7 +19,6 @@ export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
@@ -27,16 +29,33 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-navy border-b border-navy-light sticky top-0 z-50">
+    <header
+      style={{
+        backgroundColor: "var(--color-navy)",
+        borderBottom: "1.5px solid var(--color-blue)",
+      }}
+      className="sticky top-0 z-50"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo / Company name */}
-          <Link
-            href="/"
-            className="text-white font-semibold text-lg leading-tight hover:text-slate-lighter transition-colors"
-          >
-            <span className="block sm:hidden">GTA</span>
-            <span className="hidden sm:block">Groundwork Technology Advisors</span>
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/gta_logo_mark.svg"
+              alt="Groundwork Technology Advisors"
+              width={36}
+              height={36}
+              className="block sm:hidden"
+              priority
+            />
+            <Image
+              src="/gta_logo_reversed.svg"
+              alt="Groundwork Technology Advisors"
+              width={260}
+              height={40}
+              className="hidden sm:block"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -45,22 +64,26 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
-                  isActive(link.href)
-                    ? "text-white bg-navy-light"
-                    : "text-slate-lighter hover:text-white hover:bg-navy-light"
-                }`}
+                className={`nav-link ${isActive(link.href) ? "nav-link-active" : ""}`}
               >
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/scorecard/"
+              className="nav-scorecard-btn"
+              style={{ marginLeft: "8px" }}
+            >
+              Scorecard
+            </Link>
           </nav>
 
           {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded text-slate-lighter hover:text-white hover:bg-navy-light transition-colors"
+            className="md:hidden p-2 rounded transition-colors"
+            style={{ color: "rgba(255,255,255,0.8)" }}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
           >
@@ -79,21 +102,23 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-navy-light bg-navy">
+        <div
+          style={{ borderTop: "1px solid rgba(255,255,255,0.1)", backgroundColor: "var(--color-navy)" }}
+          className="md:hidden"
+        >
           <nav className="max-w-6xl mx-auto px-4 py-2 flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2.5 rounded text-sm font-medium transition-colors ${
-                  isActive(link.href)
-                    ? "text-white bg-navy-light"
-                    : "text-slate-lighter hover:text-white hover:bg-navy-light"
-                }`}
+                className={`nav-link ${isActive(link.href) ? "nav-link-active" : ""}`}
               >
                 {link.label}
               </Link>
             ))}
+            <Link href="/scorecard/" className="nav-link" style={{ color: "var(--color-ltblue)" }}>
+              Scorecard
+            </Link>
           </nav>
         </div>
       )}

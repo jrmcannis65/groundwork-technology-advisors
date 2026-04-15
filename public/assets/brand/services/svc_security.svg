@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <rect width="160" height="160" fill="#1a3a5c" rx="6"/>
+  <path d="M40,80 L64,80 L64,58 L96,58 L96,80 L120,80 L120,102 L150,102" fill="none" stroke="white" stroke-width="0.8" opacity="0.12"/>
+  <path d="M10,102 L44,102 L44,80 L74,80 L74,58 L108,58 L108,80 L150,80" fill="none" stroke="white" stroke-width="0.8" opacity="0.08"/>
+  <path d="M80,16 L106,27 L106,57 Q106,78 80,90 Q54,78 54,57 L54,27 Z" fill="#2e7ab8" opacity="0.2"/>
+  <path d="M80,16 L106,27 L106,57 Q106,78 80,90 Q54,78 54,57 L54,27 Z" fill="none" stroke="#4a9fd4" stroke-width="1.5" opacity="0.75"/>
+  <path d="M80,26 L98,34 L98,56 Q98,72 80,82 Q62,72 62,56 L62,34 Z" fill="none" stroke="white" stroke-width="0.8" opacity="0.28"/>
+  <path d="M80,36 L92,42 L92,55 Q92,66 80,74 Q68,66 68,55 L68,42 Z" fill="none" stroke="white" stroke-width="0.8" opacity="0.18"/>
+  <path d="M70,52 L77,60 L92,42" fill="none" stroke="#4a9fd4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <rect x="10" y="24" width="32" height="14" rx="3" fill="none" stroke="white" stroke-width="0.8" opacity="0.38"/>
+  <text x="26" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.65">HIPAA</text>
+  <rect x="118" y="24" width="32" height="14" rx="3" fill="none" stroke="white" stroke-width="0.8" opacity="0.38"/>
+  <text x="134" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.65">SOC 2</text>
+  <rect x="118" y="60" width="32" height="14" rx="3" fill="none" stroke="white" stroke-width="0.8" opacity="0.38"/>
+  <text x="134" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.65">NIST</text>
+  <line x1="42" y1="31" x2="54" y2="40" stroke="white" stroke-width="0.6" opacity="0.2" stroke-dasharray="3,2"/>
+  <line x1="118" y1="31" x2="106" y2="40" stroke="white" stroke-width="0.6" opacity="0.2" stroke-dasharray="3,2"/>
+  <line x1="118" y1="67" x2="106" y2="62" stroke="white" stroke-width="0.6" opacity="0.2" stroke-dasharray="3,2"/>
+  <line x1="20" y1="118" x2="140" y2="118" stroke="#4a9fd4" stroke-width="1" opacity="0.3"/>
+  <text x="80" y="133" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" font-weight="700" fill="white" opacity="0.6">Security and Compliance</text>
+  <text x="80" y="145" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.35" letter-spacing="0.5">Readiness</text>
+</svg>

@@ -10,34 +10,32 @@ export default function CallToAction({
   body = "If you're not sure which engagement fits your situation, reach out. A brief call is usually enough to figure out whether there's a useful fit.",
 }: Props) {
   return (
-    <section className="bg-navy">
+    <section style={{ backgroundColor: "var(--color-navy)" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-2xl">
-          <h2 className="text-white text-2xl sm:text-3xl font-semibold tracking-tight">
-            {heading}
-          </h2>
-          <p className="text-slate-lighter text-base sm:text-lg mt-4 leading-relaxed">
+          <h2 style={{ color: "white" }}>{heading}</h2>
+          <p
+            className="text-sm mt-4 leading-relaxed"
+            style={{ color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-sans)" }}
+          >
             {body}
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
-            <Link
-              href="/contact/"
-              className="inline-block bg-white text-navy font-semibold px-6 py-3 rounded hover:bg-off-white transition-colors text-sm"
-            >
+            <Link href="/contact/" className="btn-primary">
               Get in touch
             </Link>
-            <div className="flex flex-col gap-1 text-sm text-slate-lighter">
+            <div
+              className="flex flex-col gap-1 text-sm"
+              style={{ color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-sans)" }}
+            >
               <a
                 href="mailto:info@groundworktechnologyadvisors.com"
-                className="hover:text-white transition-colors"
+                className="footer-link"
               >
                 info@groundworktechnologyadvisors.com
               </a>
-              <a
-                href="tel:+15095590899"
-                className="hover:text-white transition-colors"
-              >
+              <a href="tel:+15095590899" className="footer-link">
                 509-559-0899
               </a>
             </div>

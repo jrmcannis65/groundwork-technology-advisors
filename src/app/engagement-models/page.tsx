@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/metadata";
 import CallToAction from "@/components/CallToAction";
-import Link from "next/link";
 
 export const metadata: Metadata = generatePageMetadata(
   "Engagement Models",
@@ -15,7 +14,7 @@ const models = [
     title: "Fixed-fee project",
     subtitle: "Defined scope. Specific deliverable. Agreed fee.",
     description: [
-      "Most assessment engagements—technology ecosystem reviews, engineering organization assessments, security and compliance readiness reviews, roadmap development—are structured as fixed-fee projects. The scope, timeline, and fee are defined before any work begins.",
+      "Most assessment engagements are structured as fixed-fee projects: technology ecosystem reviews, engineering organization assessments, security and compliance readiness reviews, roadmap development. The scope, timeline, and fee are defined before any work begins.",
       "At the end of the engagement you receive a written deliverable: a structured assessment, a gap inventory, a phased roadmap, or whatever the engagement was designed to produce. There is no ambiguity about what you are getting or what it costs.",
       "Fixed-fee projects are appropriate when there is a specific question to answer or a specific output you need. They work well for companies preparing for a transaction, evaluating a technology investment, or trying to get an honest picture of where their technology organization stands.",
     ],
@@ -27,7 +26,7 @@ const models = [
     subtitle: "Fractional CIO or CTO services at a defined time commitment.",
     description: [
       "For companies that need ongoing senior technology leadership without a full-time hire, the retainer model provides consistent access to a senior technology executive at a defined number of days per week. Typically structured at one to two days per week depending on the company's needs.",
-      "The scope is defined at the start of the engagement based on what the company actually needs. That varies considerably. Some clients need help managing an existing engineering team and setting direction. Others need a senior technology voice in leadership conversations, board meetings, or investor updates. Others are in the middle of a transition—a platform migration, a post-acquisition integration, a leadership gap—and need consistent oversight until it is resolved.",
+      "The scope is defined at the start of the engagement based on what the company actually needs. That varies considerably. Some clients need help managing an existing engineering team and setting direction. Others need a senior technology voice in leadership conversations, board meetings, or investor updates. Others are in the middle of a transition (a platform migration, a post-acquisition integration, a leadership gap) and need consistent oversight until it is resolved.",
       "Retainers are reviewed periodically and can be adjusted as the situation changes. The goal is to be useful for as long as there is a genuine need, not to extend the engagement indefinitely.",
     ],
     fit: "Good fit for: companies between technology executives, PE-backed companies that need technology leadership during a growth phase, organizations managing a specific technology transition.",
@@ -37,7 +36,7 @@ const models = [
     title: "Hourly or daily advisory",
     subtitle: "A senior technology perspective on a specific decision or situation.",
     description: [
-      "Some companies do not need a structured engagement or an ongoing relationship. They have a specific decision in front of them—evaluating a vendor, assessing a technology acquisition target, reviewing a proposed architecture, or getting an outside perspective on a hire—and they need a qualified opinion from someone who has been in that situation before.",
+      "Some companies do not need a structured engagement or an ongoing relationship. They have a specific decision in front of them: evaluating a vendor, assessing a technology acquisition target, reviewing a proposed architecture, or getting an outside perspective on a hire. They need a qualified opinion from someone who has been in that situation before.",
       "Hourly and daily advisory is available for exactly that. There is no minimum commitment and no requirement to structure a larger engagement. You get billed for the time you use.",
       "This model is also useful for companies that want to start with a limited interaction before committing to a larger project or retainer.",
     ],
@@ -49,12 +48,13 @@ export default function EngagementModelsPage() {
   return (
     <>
       {/* Page header */}
-      <section className="bg-navy text-white">
+      <section style={{ backgroundColor: "var(--color-navy)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
-          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-            Engagement Models
-          </h1>
-          <p className="mt-4 text-slate-lighter text-lg max-w-2xl leading-relaxed">
+          <h1 style={{ color: "white" }}>Engagement Models</h1>
+          <p
+            className="text-sm mt-4 max-w-2xl leading-relaxed"
+            style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
+          >
             Three ways to work together, depending on what the situation
             calls for. The goal is to match the engagement structure to the
             actual need rather than defaulting to one size.
@@ -63,27 +63,45 @@ export default function EngagementModelsPage() {
       </section>
 
       {/* Models */}
-      <section className="bg-white">
+      <section style={{ backgroundColor: "var(--color-offwhite)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="space-y-16 sm:space-y-20">
             {models.map((model, index) => (
               <div
                 key={model.number}
                 className={`grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 ${
-                  index < models.length - 1
-                    ? "pb-16 sm:pb-20 border-b border-slate-lighter"
-                    : ""
+                  index < models.length - 1 ? "pb-16 sm:pb-20" : ""
                 }`}
+                style={
+                  index < models.length - 1
+                    ? { borderBottom: "0.5px solid #d8e4ef" }
+                    : {}
+                }
               >
                 {/* Label + title */}
-                <div className="flex flex-col gap-3">
-                  <span className="text-slate text-sm font-mono">
-                    {model.number}
-                  </span>
-                  <h2 className="text-navy text-xl sm:text-2xl font-semibold tracking-tight leading-snug">
+                <div
+                  className="flex flex-col gap-3"
+                  style={{ borderTop: "2.5px solid var(--color-blue)", paddingTop: "14px" }}
+                >
+                  <span className="section-label">{model.number}</span>
+                  <h3
+                    className="text-sm"
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontWeight: 700,
+                      color: "var(--color-navy)",
+                    }}
+                  >
                     {model.title}
-                  </h2>
-                  <p className="text-slate text-sm leading-relaxed">
+                  </h3>
+                  <p
+                    className="text-[11px]"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      color: "var(--color-gray)",
+                      lineHeight: 1.75,
+                    }}
+                  >
                     {model.subtitle}
                   </p>
                 </div>
@@ -91,13 +109,34 @@ export default function EngagementModelsPage() {
                 {/* Description */}
                 <div className="lg:col-span-2 space-y-4">
                   {model.description.map((paragraph, i) => (
-                    <p key={i} className="text-charcoal leading-relaxed">
+                    <p
+                      key={i}
+                      className="text-sm"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: "var(--color-charcoal)",
+                        lineHeight: 1.75,
+                      }}
+                    >
                       {paragraph}
                     </p>
                   ))}
-                  <div className="mt-6 p-4 bg-off-white rounded-lg border border-slate-lighter">
-                    <p className="text-sm text-charcoal">
-                      <span className="font-medium text-navy">
+                  <div
+                    className="mt-6 p-4"
+                    style={{
+                      backgroundColor: "var(--color-pale)",
+                      borderRadius: "6px",
+                      border: "0.5px solid #d8e4ef",
+                    }}
+                  >
+                    <p
+                      className="text-[11px]"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: "var(--color-charcoal)",
+                      }}
+                    >
+                      <span style={{ fontWeight: 700, color: "var(--color-navy)" }}>
                         Good fit for:{" "}
                       </span>
                       {model.fit.replace("Good fit for: ", "")}
@@ -110,12 +149,10 @@ export default function EngagementModelsPage() {
         </div>
       </section>
 
-      {/* FAQ-style section */}
-      <section className="bg-off-white">
+      {/* FAQ */}
+      <section style={{ backgroundColor: "var(--color-pale)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <h2 className="text-navy text-2xl font-semibold tracking-tight mb-10">
-            Common questions
-          </h2>
+          <h2 className="mb-10">Common questions</h2>
           <div className="max-w-3xl space-y-8">
             {[
               {
@@ -136,8 +173,17 @@ export default function EngagementModelsPage() {
               },
             ].map((item) => (
               <div key={item.q} className="flex flex-col gap-2">
-                <h3 className="text-navy font-semibold text-base">{item.q}</h3>
-                <p className="text-charcoal text-sm leading-relaxed">{item.a}</p>
+                <h3>{item.q}</h3>
+                <p
+                  className="text-sm"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "var(--color-charcoal)",
+                    lineHeight: 1.75,
+                  }}
+                >
+                  {item.a}
+                </p>
               </div>
             ))}
           </div>
@@ -146,7 +192,7 @@ export default function EngagementModelsPage() {
 
       <CallToAction
         heading="Not sure which model fits your situation?"
-        body="A brief call is usually enough to figure out what kind of engagement makes sense—or whether it makes sense at all."
+        body="A brief call is usually enough to figure out what kind of engagement makes sense, or whether it makes sense at all."
       />
     </>
   );

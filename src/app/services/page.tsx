@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { services } from "@/data/services";
 import { generatePageMetadata } from "@/lib/metadata";
 import CallToAction from "@/components/CallToAction";
+import AIReadinessForm from "@/components/AIReadinessForm";
 
 export const metadata: Metadata = generatePageMetadata(
   "Services",
@@ -13,51 +15,42 @@ export default function ServicesPage() {
   return (
     <>
       {/* Page header */}
-      <section className="bg-navy text-white">
+      <section style={{ backgroundColor: "var(--color-navy)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
-          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-            Services
-          </h1>
-          <p className="mt-4 text-slate-lighter text-lg max-w-2xl leading-relaxed">
+          <h1 style={{ color: "white" }}>Services</h1>
+          <p
+            className="text-sm mt-4 max-w-2xl leading-relaxed"
+            style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
+          >
             Each engagement is scoped to a specific outcome. The work focuses on
-            delivering something useful—a written assessment, a practical
-            roadmap, or consistent senior leadership—rather than a long-term
+            delivering something useful: a written assessment, a practical
+            roadmap, or consistent senior leadership. Not a long-term
             dependency.
           </p>
         </div>
       </section>
 
       {/* Service sections */}
-      <div className="bg-white">
+      <div>
         {services.map((service, index) => (
           <section
             key={service.id}
             id={service.id}
-            className={index % 2 === 0 ? "bg-white" : "bg-off-white"}
+            style={{ backgroundColor: index % 2 === 0 ? "white" : "var(--color-pale)" }}
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
-                {/* Icon + title */}
+                {/* Graphic + title */}
                 <div className="flex flex-col gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-slate-lighter flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-navy"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={1.5}
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d={service.icon}
-                      />
-                    </svg>
-                  </div>
-                  <h2 className="text-navy text-xl sm:text-2xl font-semibold tracking-tight leading-snug">
-                    {service.title}
-                  </h2>
+                  <Image
+                    src={`/assets/brand/services/${service.graphic}`}
+                    alt=""
+                    width={160}
+                    height={160}
+                    style={{ width: "160px", height: "160px", objectFit: "contain" }}
+                    aria-hidden="true"
+                  />
+                  <h2 className="text-sm">{service.title}</h2>
                 </div>
 
                 {/* Description */}
@@ -65,11 +58,52 @@ export default function ServicesPage() {
                   {service.fullDescription.map((paragraph, i) => (
                     <p
                       key={i}
-                      className="text-charcoal leading-relaxed"
+                      className="text-sm"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: "var(--color-charcoal)",
+                        lineHeight: 1.75,
+                      }}
                     >
                       {paragraph}
                     </p>
                   ))}
+
+                  {service.id === "ai-readiness-assessment" && (
+                    <>
+                      <div style={{ marginTop: "8px" }}>
+                        <p className="section-label mb-3">What this engagement delivers</p>
+                        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                          {[
+                            "An inventory of AI tools and capabilities already in use across your organization, including shadow adoption your IT team may not be tracking",
+                            "An honest assessment of your data environment and whether it supports the AI use cases you are considering",
+                            "A governance gap review covering acceptable use policy, data handling, vendor AI terms, and regulatory exposure",
+                            "A prioritized set of recommendations organized by what to do first, what to defer, and what to avoid",
+                          ].map((item, i) => (
+                            <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                              <span
+                                style={{
+                                  width: "5px",
+                                  height: "5px",
+                                  borderRadius: "50%",
+                                  background: "var(--color-blue)",
+                                  flexShrink: 0,
+                                  marginTop: "8px",
+                                }}
+                              />
+                              <span className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", lineHeight: 1.65 }}>
+                                {item}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <p className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "var(--color-gray)", borderTop: "0.5px solid #e8eef4", paddingTop: "12px" }}>
+                        Fixed-fee engagement. Scope and fee agreed before work begins. Typically completed in 30 to 45 days.
+                      </p>
+                      <AIReadinessForm />
+                    </>
+                  )}
                 </div>
               </div>
             </div>

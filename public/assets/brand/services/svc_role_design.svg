@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <rect width="160" height="160" fill="#1a3a5c" rx="6"/>
+  <defs>
+    <pattern id="dg3" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.8" fill="white" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="160" height="160" fill="url(#dg3)" rx="6"/>
+  <rect x="34" y="92" width="92" height="22" rx="3" fill="#2e7ab8" opacity="0.45"/>
+  <rect x="34" y="92" width="92" height="22" rx="3" fill="none" stroke="#4a9fd4" stroke-width="1" opacity="0.7"/>
+  <text x="80" y="107" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="white" opacity="0.85">Foundation roles</text>
+  <rect x="46" y="64" width="68" height="22" rx="3" fill="#2e7ab8" opacity="0.3"/>
+  <rect x="46" y="64" width="68" height="22" rx="3" fill="none" stroke="white" stroke-width="1" opacity="0.5"/>
+  <text x="80" y="79" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="white" opacity="0.7">Mid-level leads</text>
+  <rect x="58" y="36" width="44" height="22" rx="3" fill="#2e7ab8" opacity="0.2"/>
+  <rect x="58" y="36" width="44" height="22" rx="3" fill="none" stroke="white" stroke-width="1" opacity="0.4"/>
+  <text x="80" y="51" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="white" opacity="0.6">Leadership</text>
+  <rect x="68" y="12" width="24" height="18" rx="3" fill="#2e7ab8" opacity="0.15"/>
+  <rect x="68" y="12" width="24" height="18" rx="3" fill="none" stroke="white" stroke-width="1" opacity="0.3"/>
+  <text x="80" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.5">CIO</text>
+  <line x1="126" y1="48" x2="144" y2="48" stroke="white" stroke-width="0.7" opacity="0.25"/>
+  <line x1="144" y1="36" x2="144" y2="58" stroke="white" stroke-width="0.7" opacity="0.25"/>
+  <line x1="126" y1="36" x2="144" y2="36" stroke="white" stroke-width="0.7" opacity="0.2"/>
+  <line x1="126" y1="58" x2="144" y2="58" stroke="white" stroke-width="0.7" opacity="0.2"/>
+  <text x="148" y="51" font-family="Arial,sans-serif" font-size="6" fill="white" opacity="0.4">Gap?</text>
+  <line x1="20" y1="128" x2="140" y2="128" stroke="#4a9fd4" stroke-width="1" opacity="0.3"/>
+  <text x="80" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" font-weight="700" fill="white" opacity="0.6">Role and Org</text>
+  <text x="80" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.35" letter-spacing="0.5">Design</text>
+</svg>

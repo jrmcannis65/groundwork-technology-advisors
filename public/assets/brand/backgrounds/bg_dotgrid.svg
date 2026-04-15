@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <rect width="400" height="200" fill="#1a3a5c"/>
+  <defs>
+    <pattern id="dga" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.2" fill="white" opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="200" fill="url(#dga)"/>
+  <circle cx="320" cy="100" r="60" fill="none" stroke="white" stroke-width="0.8" opacity="0.12"/>
+  <circle cx="320" cy="100" r="38" fill="none" stroke="white" stroke-width="0.8" opacity="0.18"/>
+  <circle cx="320" cy="100" r="18" fill="none" stroke="white" stroke-width="1" opacity="0.28"/>
+  <circle cx="320" cy="100" r="6" fill="white" opacity="0.35"/>
+</svg>

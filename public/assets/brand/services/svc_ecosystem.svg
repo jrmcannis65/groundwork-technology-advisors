@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <rect width="160" height="160" fill="#1a3a5c" rx="6"/>
+  <defs>
+    <pattern id="dg1" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.9" fill="white" opacity="0.14"/>
+    </pattern>
+  </defs>
+  <rect width="160" height="160" fill="url(#dg1)" rx="6"/>
+  <rect x="14" y="18" width="38" height="22" rx="3" fill="none" stroke="white" stroke-width="0.9" opacity="0.45"/>
+  <text x="33" y="33" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.7">EHR</text>
+  <rect x="61" y="10" width="38" height="22" rx="3" fill="#2e7ab8" opacity="0.3"/>
+  <rect x="61" y="10" width="38" height="22" rx="3" fill="none" stroke="#4a9fd4" stroke-width="1.1" opacity="0.85"/>
+  <text x="80" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.95">Core systems</text>
+  <rect x="108" y="18" width="38" height="22" rx="3" fill="none" stroke="white" stroke-width="0.9" opacity="0.45"/>
+  <text x="127" y="33" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.7">Vendors</text>
+  <rect x="14" y="76" width="38" height="22" rx="3" fill="none" stroke="white" stroke-width="0.9" opacity="0.38"/>
+  <text x="33" y="91" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.6">Data</text>
+  <rect x="61" y="84" width="38" height="22" rx="3" fill="none" stroke="white" stroke-width="0.9" opacity="0.32"/>
+  <text x="80" y="99" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.55">Integrations</text>
+  <rect x="108" y="76" width="38" height="22" rx="3" fill="none" stroke="white" stroke-width="0.9" opacity="0.38"/>
+  <text x="127" y="91" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.6">Security</text>
+  <line x1="52" y1="29" x2="61" y2="21" stroke="white" stroke-width="0.7" opacity="0.28" stroke-dasharray="3,2"/>
+  <line x1="99" y1="21" x2="108" y2="29" stroke="white" stroke-width="0.7" opacity="0.28" stroke-dasharray="3,2"/>
+  <line x1="33" y1="40" x2="33" y2="76" stroke="white" stroke-width="0.7" opacity="0.2" stroke-dasharray="3,2"/>
+  <line x1="80" y1="32" x2="80" y2="84" stroke="white" stroke-width="0.7" opacity="0.2" stroke-dasharray="3,2"/>
+  <line x1="127" y1="40" x2="127" y2="76" stroke="white" stroke-width="0.7" opacity="0.2" stroke-dasharray="3,2"/>
+  <line x1="52" y1="87" x2="61" y2="92" stroke="white" stroke-width="0.7" opacity="0.18" stroke-dasharray="3,2"/>
+  <line x1="99" y1="92" x2="108" y2="87" stroke="white" stroke-width="0.7" opacity="0.18" stroke-dasharray="3,2"/>
+  <circle cx="80" cy="56" r="9" fill="none" stroke="#4a9fd4" stroke-width="1.2" opacity="0.75"/>
+  <line x1="74" y1="51" x2="86" y2="61" stroke="#4a9fd4" stroke-width="1.2" opacity="0.75"/>
+  <line x1="86" y1="51" x2="74" y2="61" stroke="#4a9fd4" stroke-width="1.2" opacity="0.75"/>
+  <line x1="20" y1="128" x2="140" y2="128" stroke="#4a9fd4" stroke-width="1" opacity="0.3"/>
+  <text x="80" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" font-weight="700" fill="white" opacity="0.6">Technology Ecosystem</text>
+  <text x="80" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.35" letter-spacing="0.5">Assessment</text>
+</svg>

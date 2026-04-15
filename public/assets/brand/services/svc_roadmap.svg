@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <rect width="160" height="160" fill="#1a3a5c" rx="6"/>
+  <defs>
+    <pattern id="dg6" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.8" fill="white" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="160" height="160" fill="url(#dg6)" rx="6"/>
+  <line x1="16" y1="80" x2="144" y2="80" stroke="white" stroke-width="1.5" opacity="0.22"/>
+  <circle cx="30" cy="80" r="5" fill="#4a9fd4" opacity="0.95"/>
+  <text x="30" y="96" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="white" opacity="0.45">Now</text>
+  <circle cx="72" cy="80" r="4" fill="white" opacity="0.5"/>
+  <rect x="46" y="36" width="52" height="36" rx="3" fill="#2e7ab8" opacity="0.35"/>
+  <rect x="46" y="36" width="52" height="36" rx="3" fill="none" stroke="#4a9fd4" stroke-width="1" opacity="0.75"/>
+  <text x="72" y="56" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.9">Near term</text>
+  <text x="72" y="67" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="white" opacity="0.55">0-6 months</text>
+  <line x1="72" y1="72" x2="72" y2="76" stroke="white" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="112" cy="80" r="4" fill="white" opacity="0.38"/>
+  <rect x="88" y="90" width="48" height="32" rx="3" fill="none" stroke="white" stroke-width="1" opacity="0.42"/>
+  <text x="112" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.65">Mid term</text>
+  <text x="112" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="white" opacity="0.4">6-12 months</text>
+  <line x1="112" y1="84" x2="112" y2="90" stroke="white" stroke-width="0.8" opacity="0.3"/>
+  <line x1="20" y1="128" x2="140" y2="128" stroke="#4a9fd4" stroke-width="1" opacity="0.3"/>
+  <text x="80" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" font-weight="700" fill="white" opacity="0.6">Technology Roadmap</text>
+  <text x="80" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.35" letter-spacing="0.5">Development</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="120" viewBox="0 0 220 120">
+  <!-- Foundation mark centered -->
+  <rect x="75" y="8"  width="44" height="9" rx="2" fill="#1a3a5c"/>
+  <rect x="68" y="21" width="58" height="9" rx="2" fill="#1a3a5c" opacity="0.65"/>
+  <rect x="61" y="34" width="72" height="9" rx="2" fill="#1a3a5c" opacity="0.35"/>
+  <!-- Wordmark centered -->
+  <text x="97" y="72" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#1a3a5c" text-anchor="middle" letter-spacing="-0.2">Groundwork</text>
+  <text x="97" y="90" font-family="Georgia, serif" font-size="12" font-weight="400" fill="#1a3a5c" text-anchor="middle" letter-spacing="0.5">Technology Advisors</text>
+  <line x1="27" y1="98" x2="167" y2="98" stroke="#2e7ab8" stroke-width="1.2"/>
+</svg>

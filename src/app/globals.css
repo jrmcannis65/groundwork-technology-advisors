@@ -1,22 +1,209 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #1b2a4a;
-  --color-navy-light: #243660;
-  --color-navy-dark: #111d33;
-  --color-charcoal: #3d3d3d;
-  --color-slate: #6b7a8d;
-  --color-slate-light: #8fa0b4;
-  --color-slate-lighter: #e8edf3;
-  --color-off-white: #f8f9fb;
+  /* Brand tokens */
+  --color-navy:      #1a3a5c;
+  --color-blue:      #2e7ab8;
+  --color-ltblue:    #4a9fd4;
+  --color-pale:      #f0f5fa;
+  --color-offwhite:  #f5f5f3;
+  --color-charcoal:  #2c2c2c;
+  --color-gray:      #555555;
+  --color-lgray:     #999999;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Legacy aliases kept for any remaining Tailwind class references */
+  --color-navy-light:     #243660;
+  --color-navy-dark:      #111d33;
+  --color-slate:          #6b7a8d;
+  --color-slate-light:    #8fa0b4;
+  --color-slate-lighter:  #e8edf3;
+  --color-off-white:      #f5f5f3;
+
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-sans:  Arial, Helvetica, sans-serif;
 }
 
 body {
-  background-color: #ffffff;
-  color: #3d3d3d;
+  background-color: var(--color-offwhite);
+  color: var(--color-charcoal);
   font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography hierarchy ─────────────────────────────── */
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 5vw, 42px);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 4vw, 30px);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.5vw, 20px);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+/* ── Utilities ────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--color-blue);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── Buttons ──────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-blue);
+  color: white;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  transition: background-color 0.15s;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background-color: var(--color-ltblue);
+}
+
+.btn-hero-outline {
+  display: inline-block;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  color: white;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  transition: border-color 0.15s;
+  text-decoration: none;
+}
+.btn-hero-outline:hover {
+  border-color: white;
+}
+
+.btn-outline-blue {
+  display: inline-block;
+  border: 1.5px solid var(--color-blue);
+  color: var(--color-blue);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: background-color 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.btn-outline-blue:hover {
+  background-color: var(--color-blue);
+  color: white;
+}
+
+/* ── Nav links ────────────────────────────────────────── */
+.nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.15s;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav-link:hover {
+  color: var(--color-ltblue);
+}
+.nav-link-active {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Nav scorecard button ─────────────────────────────── */
+.nav-scorecard-btn {
+  display: inline-block;
+  background-color: var(--color-blue);
+  color: white;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  transition: background-color 0.15s;
+  text-decoration: none;
+}
+.nav-scorecard-btn:hover {
+  background-color: var(--color-ltblue);
+}
+
+/* ── Insights post cards ──────────────────────────────── */
+.post-card-item {
+  transition: border-color 0.15s;
+}
+.post-card-item:hover {
+  border-color: var(--color-blue) !important;
+}
+.post-featured-card {
+  transition: box-shadow 0.15s;
+}
+.post-featured-card:hover {
+  box-shadow: 0 2px 12px rgba(46, 122, 184, 0.12);
+}
+
+/* ── Footer links ─────────────────────────────────────── */
+.footer-link {
+  color: var(--color-ltblue);
+  transition: color 0.15s;
+  text-decoration: none;
+}
+.footer-link:hover {
+  color: white;
+}
+
+/* ── Service cards ────────────────────────────────────── */
+.service-card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+.service-card {
+  background: white;
+  border: 0.5px solid #d8e4ef;
+  border-radius: 6px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  transition: border-color 0.15s;
+}
+.service-card-link:hover .service-card {
+  border-color: var(--color-blue);
+}
+
+/* ── Text links ───────────────────────────────────────── */
+.link-blue {
+  color: var(--color-blue);
+  transition: color 0.15s;
+}
+.link-blue:hover {
+  color: var(--color-ltblue);
+}
+.link-ltblue {
+  color: var(--color-ltblue);
+  transition: color 0.15s;
+  text-decoration: underline;
+}
+.link-ltblue:hover {
+  color: white;
 }
