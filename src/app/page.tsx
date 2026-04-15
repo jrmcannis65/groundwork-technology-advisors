@@ -192,7 +192,7 @@ export default function HomePage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 items-start">
               <Link href="/scorecard/" className="btn-primary">
-                Take the self-assessment
+                Start with the scorecard
               </Link>
             </div>
           </div>
