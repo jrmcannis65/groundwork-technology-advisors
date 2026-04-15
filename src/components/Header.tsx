@@ -48,9 +48,9 @@ export default function Header() {
               priority
             />
             <Image
-              src="/gta_logo_horizontal.svg"
+              src="/gta_logo_reversed.svg"
               alt="Groundwork Technology Advisors"
-              width={160}
+              width={260}
               height={40}
               className="hidden sm:block"
               priority
