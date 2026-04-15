@@ -404,6 +404,63 @@ export default function HowWeWorkPage() {
         </div>
       </section>
 
+      {/* Engagement models */}
+      <section style={{ backgroundColor: "var(--color-pale)" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <p className="section-label mb-4">Engagement models</p>
+          <div className="max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {[
+              {
+                title: "Fixed-fee project",
+                desc: "A defined assessment with a specific written deliverable at the end. Scope, timeline, and fee are agreed upon before work begins. Appropriate for most assessment engagements.",
+              },
+              {
+                title: "Monthly retainer",
+                desc: "Ongoing fractional CIO or CTO services at a defined time commitment per week. Scope is set at the start of the engagement and revisited as the relationship evolves.",
+              },
+              {
+                title: "Hourly or daily advisory",
+                desc: "For companies that need a senior technology perspective on a specific decision or situation without committing to a larger engagement. Available by the hour or day.",
+              },
+            ].map((m) => (
+              <div
+                key={m.title}
+                style={{
+                  background: "white",
+                  border: "0.5px solid #d0dce8",
+                  borderTop: "2.5px solid var(--color-blue)",
+                  borderRadius: "8px",
+                  padding: "18px 20px",
+                }}
+              >
+                <p
+                  className="text-sm"
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontWeight: 700,
+                    color: "var(--color-navy)",
+                    lineHeight: 1.35,
+                    marginBottom: "10px",
+                  }}
+                >
+                  {m.title}
+                </p>
+                <p
+                  className="text-xs"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "var(--color-gray)",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {m.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Outcomes */}
       <section style={{ backgroundColor: "white" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">

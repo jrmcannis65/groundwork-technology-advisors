@@ -316,7 +316,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-10">
-            <Link href="/engagement-models/" className="link-blue text-sm font-medium">
+            <Link href="/how-we-work/" className="link-blue text-sm font-medium">
               More about engagement models &rarr;
             </Link>
           </div>

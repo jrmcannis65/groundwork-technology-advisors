@@ -10,7 +10,6 @@ const navLinks = [
   { href: "/services/", label: "Services" },
   { href: "/how-we-work/", label: "How we work" },
   { href: "/about/", label: "About" },
-  { href: "/engagement-models/", label: "Engagement Models" },
   { href: "/perspectives/", label: "Perspectives" },
   { href: "/contact/", label: "Contact" },
 ];
@@ -49,9 +48,9 @@ export default function Header() {
               priority
             />
             <Image
-              src="/gta_logo_reversed.svg"
+              src="/gta_logo_horizontal.svg"
               alt="Groundwork Technology Advisors"
-              width={260}
+              width={160}
               height={40}
               className="hidden sm:block"
               priority

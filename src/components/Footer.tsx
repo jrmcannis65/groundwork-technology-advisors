@@ -40,7 +40,7 @@ export default function Footer() {
           <nav className="flex gap-4">
             <Link href="/services/" className="footer-link">Services</Link>
             <Link href="/about/" className="footer-link">About</Link>
-            <Link href="/engagement-models/" className="footer-link">Engagement Models</Link>
+            <Link href="/how-we-work/" className="footer-link">How We Work</Link>
             <Link href="/contact/" className="footer-link">Contact</Link>
           </nav>
         </div>
