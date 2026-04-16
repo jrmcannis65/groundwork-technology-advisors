@@ -43,11 +43,11 @@ export default function HomePage() {
               engineering practices, and build a clear path forward.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link href="/scorecard/" className="btn-primary">
-                Start with the scorecard
-              </Link>
-              <Link href="/contact/" className="btn-hero-outline">
+              <Link href="/contact/" className="btn-primary">
                 Get in touch
+              </Link>
+              <Link href="/scorecard/" className="btn-hero-outline">
+                Start with the scorecard
               </Link>
             </div>
           </div>
