@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { services } from "@/data/services";
 import { generatePageMetadata } from "@/lib/metadata";
 import CallToAction from "@/components/CallToAction";
 import AIReadinessForm from "@/components/AIReadinessForm";
 
 export const metadata: Metadata = generatePageMetadata(
-  "Services",
-  "Technology consulting services for small and mid-size companies: ecosystem assessments, engineering organization reviews, security and compliance readiness, fractional CIO/CTO services, and technology roadmap development.",
+  "Technology Consulting Services",
+  "Technology ecosystem assessments, engineering organization reviews, security and compliance readiness, AI readiness assessments, and fractional CIO and CTO services for small and mid-size companies.",
   "/services/"
 );
 
@@ -68,6 +69,16 @@ export default function ServicesPage() {
                       {paragraph}
                     </p>
                   ))}
+
+                  <div style={{ paddingTop: "4px" }}>
+                    <Link
+                      href={`/articles/${service.articleSlug}/`}
+                      className="link-blue text-xs font-medium"
+                      style={{ fontFamily: "var(--font-sans)" }}
+                    >
+                      Further reading &rarr;
+                    </Link>
+                  </div>
 
                   {service.id === "ai-readiness-assessment" && (
                     <>

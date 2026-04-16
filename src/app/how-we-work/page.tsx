@@ -5,8 +5,8 @@ import Link from "next/link";
 import HowWeWorkForm from "@/components/HowWeWorkForm";
 
 export const metadata: Metadata = generatePageMetadata(
-  "How We Work",
-  "Scope, methodology, and representative deliverables for a Groundwork Technology Advisors engagement. Drawn from real experience across healthcare, M&A, and compliance-driven environments.",
+  "How Technology Consulting Engagements Work",
+  "Fixed-fee assessments with specific deliverables. Every engagement starts with a conversation to make sure the scope is right before any work begins.",
   "/how-we-work/"
 );
 

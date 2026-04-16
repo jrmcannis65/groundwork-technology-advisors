@@ -5,10 +5,9 @@ import CallToAction from "@/components/CallToAction";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
-  title:
-    "Groundwork Technology Advisors | Building the Technology Foundation That Lets You Scale",
+  title: "Fractional CIO and CTO Services | Groundwork Technology Advisors",
   description:
-    "Groundwork Technology Advisors helps small and mid-size companies understand their technology environment, strengthen their engineering practices, and build a clear path forward.",
+    "Senior technology leadership for small and mid-size companies. Fixed-fee technology assessments, fractional CIO and CTO services, and practical technology roadmaps. No long-term commitment required.",
   alternates: { canonical: "https://groundworktechnologyadvisors.com/" },
   openGraph: {
     title: "Groundwork Technology Advisors",

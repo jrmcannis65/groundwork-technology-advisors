@@ -3,8 +3,8 @@ import { generatePageMetadata } from "@/lib/metadata";
 import CallToAction from "@/components/CallToAction";
 
 export const metadata: Metadata = generatePageMetadata(
-  "About",
-  "Groundwork Technology Advisors is a technology consulting firm founded by a senior technology executive with 30 years of experience leading IT and engineering organizations across healthcare services, health insurance, behavioral health, and digital product companies.",
+  "About Groundwork Technology Advisors | Jon McAnnis, Technology Executive",
+  "Groundwork Technology Advisors is led by Jon McAnnis, a technology executive with 30 years of experience across healthcare, insurance, and digital health, including CIO and CTO roles at eight organizations.",
   "/about/"
 );
 

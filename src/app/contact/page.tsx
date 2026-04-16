@@ -3,8 +3,8 @@ import { generatePageMetadata } from "@/lib/metadata";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = generatePageMetadata(
-  "Contact",
-  "Get in touch with Groundwork Technology Advisors. All inquiries receive a response within one business day.",
+  "Contact Groundwork Technology Advisors",
+  "Reach out to discuss a technology assessment, fractional CIO or CTO engagement, or technology roadmap. Most inquiries receive a response within one business day.",
   "/contact/"
 );
 

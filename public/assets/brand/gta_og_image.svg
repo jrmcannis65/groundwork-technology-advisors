@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1128" height="376" viewBox="0 0 1128 376">
+  <rect width="1128" height="376" fill="#1a3a5c"/>
+  <!-- topographic background right side -->
+  <ellipse cx="920" cy="188" rx="320" ry="200" fill="none" stroke="white" stroke-width="0.8" opacity="0.06"/>
+  <ellipse cx="920" cy="188" rx="248" ry="155" fill="none" stroke="white" stroke-width="0.8" opacity="0.09"/>
+  <ellipse cx="920" cy="188" rx="182" ry="114" fill="none" stroke="white" stroke-width="0.9" opacity="0.13"/>
+  <ellipse cx="920" cy="188" rx="122" ry="76" fill="none" stroke="white" stroke-width="1" opacity="0.19"/>
+  <ellipse cx="920" cy="188" rx="72" ry="45" fill="none" stroke="white" stroke-width="1.1" opacity="0.28"/>
+  <ellipse cx="920" cy="188" rx="32" ry="20" fill="none" stroke="white" stroke-width="1.2" opacity="0.4"/>
+  <ellipse cx="920" cy="188" rx="9" ry="6" fill="white" opacity="0.45"/>
+  <!-- accent right panel -->
+  <rect x="1020" y="0" width="108" height="376" fill="#2e7ab8" opacity="0.12"/>
+  <rect x="1074" y="0" width="54" height="376" fill="#2e7ab8" opacity="0.1"/>
+  <!-- foundation mark -->
+  <rect x="72" y="130" width="78" height="18" rx="4" fill="white"/>
+  <rect x="58" y="154" width="106" height="18" rx="4" fill="white" opacity="0.6"/>
+  <rect x="44" y="178" width="134" height="18" rx="4" fill="white" opacity="0.3"/>
+  <!-- wordmark -->
+  <text x="196" y="164" font-family="Georgia,serif" font-size="42" font-weight="700" fill="white" letter-spacing="-0.5">Groundwork</text>
+  <text x="196" y="196" font-family="Georgia,serif" font-size="24" font-weight="400" fill="white" opacity="0.7" letter-spacing="1">Technology Advisors</text>
+  <line x1="196" y1="208" x2="680" y2="208" stroke="#4a9fd4" stroke-width="2"/>
+  <!-- tagline -->
+  <text x="196" y="230" font-family="Arial,sans-serif" font-size="16" fill="white" opacity="0.42" letter-spacing="2">SENIOR TECHNOLOGY LEADERSHIP ON DEMAND</text>
+</svg>

@@ -4,7 +4,7 @@ import Scorecard from "@/components/Scorecard";
 
 export const metadata: Metadata = generatePageMetadata(
   "Technology Foundation Scorecard",
-  "Answer 10 questions about your technology environment and get an instant read on where you stand. Takes about 3 minutes.",
+  "Answer 12 questions about your technology environment and get an instant assessment of where you stand. Takes about 3 minutes.",
   "/scorecard/"
 );
 

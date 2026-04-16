@@ -17,6 +17,10 @@ export const metadata: Metadata = {
     siteName: "Groundwork Technology Advisors",
     type: "website",
     locale: "en_US",
+    images: ["/assets/brand/gta_og_image.svg"],
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
