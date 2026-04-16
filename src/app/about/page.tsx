@@ -68,6 +68,9 @@ export default function AboutPage() {
             style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)" }}
           >
             <p>
+              Groundwork Technology Advisors was founded by Jon McAnnis, a technology executive based in eastern Washington with 30 years of experience leading IT and engineering organizations.
+            </p>
+            <p>
               The firm's principal has served as CIO or CTO at eight
               organizations over a 30-year career, with engineering and
               technology teams ranging from 20 to 300 people. That experience

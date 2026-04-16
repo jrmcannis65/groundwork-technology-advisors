@@ -12,7 +12,7 @@ export const services: Service[] = [
     id: "technology-ecosystem-assessment",
     title: "Technology Ecosystem Assessment",
     shortDescription:
-      "A structured, objective review of your current technology environment—systems, integrations, vendors, debt, and gaps—delivered as a prioritized written document.",
+      "A structured review of your current technology environment covering systems, integrations, vendors, debt, and gaps. Delivered as a prioritized written document.",
     fullDescription: [
       "A structured review of a company's current technology environment including systems, integrations, vendor relationships, technical debt, and known gaps. Delivered as a written document with findings organized by priority.",
       "This engagement is useful for companies that need a clear, objective picture of where their technology stands before making investment decisions, hiring technology leadership, or preparing for a transaction. It is not a sales document and does not advocate for a particular vendor or platform. The goal is an honest inventory of where things are, with observations on what matters most.",
@@ -24,7 +24,7 @@ export const services: Service[] = [
     id: "engineering-organization-assessment",
     title: "Engineering Organization Assessment",
     shortDescription:
-      "A review of your engineering team's structure, delivery practices, Agile maturity, and DevOps practices—with specific observations and recommendations.",
+      "A review of your engineering team's structure, delivery practices, Agile maturity, and DevOps practices, with specific observations and recommendations.",
     fullDescription: [
       "A review of the engineering team's structure, delivery practices, Agile maturity, DevOps practices, and capacity relative to what the organization is asking of it. Includes specific observations and recommendations on role clarity, team structure, and development priorities.",
       "Useful for leadership teams that want better visibility into their technology organization and an outside perspective on what is and is not working. The engagement involves structured conversations with engineering leaders and, where appropriate, individual contributors, along with a review of how work is planned, tracked, and delivered.",
@@ -48,7 +48,7 @@ export const services: Service[] = [
     id: "security-compliance-readiness",
     title: "Security and Compliance Readiness",
     shortDescription:
-      "A practical review of your posture against SOC 2, HIPAA, or NIST requirements—delivered as a gap inventory with a prioritized list of recommended next steps.",
+      "A practical review of your posture against SOC 2, HIPAA, or NIST requirements. Delivered as a gap inventory with a prioritized list of recommended next steps.",
     fullDescription: [
       "A review of a company's current posture against SOC 2, HIPAA, or NIST requirements depending on what applies to the business. Delivered as a gap inventory with a prioritized list of recommended next steps.",
       "This is not a formal audit and does not produce a compliance certification. It is a practical assessment of where the company stands and what it would take to get audit ready. For companies that have never been through a formal compliance process, this engagement provides a realistic picture of the effort involved and where to focus first.",
@@ -72,7 +72,7 @@ export const services: Service[] = [
     id: "technology-roadmap-development",
     title: "Technology Roadmap Development",
     shortDescription:
-      "Working with your leadership team to develop a practical technology roadmap aligned to business priorities—actionable by your existing team, not aspirational.",
+      "Working with your leadership team to develop a practical technology roadmap aligned to business priorities. Designed to be actionable by your existing team, not aspirational.",
     fullDescription: [
       "Working with a company's leadership team to develop a practical technology roadmap aligned to business priorities. Starts with structured conversations with key stakeholders to understand what they need from technology, synthesizes those inputs into a prioritized view of technology investments, and produces a phased roadmap organized into near-term actions and longer-term initiatives.",
       "The roadmap is designed to be actionable by the existing team rather than aspirational. The goal is not a slide deck that gets filed away—it is a working document that gives the organization a shared, realistic picture of where technology is going and why.",

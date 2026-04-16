@@ -40,19 +40,10 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/gta_logo_mark.svg"
-              alt="Groundwork Technology Advisors"
-              width={36}
-              height={36}
-              className="block sm:hidden"
-              priority
-            />
-            <Image
               src="/gta_logo_reversed.svg"
               alt="Groundwork Technology Advisors"
               width={260}
               height={40}
-              className="hidden sm:block"
               priority
             />
           </Link>

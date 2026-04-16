@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import ServiceCard from "@/components/ServiceCard";
 import CallToAction from "@/components/CallToAction";
 import { services } from "@/data/services";
@@ -27,14 +26,6 @@ export default function HomePage() {
       <section style={{ backgroundColor: "var(--color-navy)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="max-w-3xl">
-            <Image
-              src="/gta_logo_reversed.svg"
-              alt="Groundwork Technology Advisors"
-              width={280}
-              height={56}
-              className="mb-8"
-              priority
-            />
             <h1 style={{ color: "white", lineHeight: 1.2 }}>
               Building the Technology Foundation That Lets You Scale.
             </h1>

@@ -225,24 +225,10 @@ export default function PerspectivesContent() {
             Follow for more
           </p>
           <p className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>
-            Short takes on technology leadership posted regularly on LinkedIn and Instagram.
+            Short takes on technology leadership posted regularly on LinkedIn.
           </p>
         </div>
         <div style={{ display: "flex", gap: "10px", flexShrink: 0 }}>
-          <a
-            href="https://www.instagram.com/groundworktechnologyadvisors"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs"
-            style={{ display: "flex", alignItems: "center", gap: "6px", padding: "8px 14px", borderRadius: "5px", fontFamily: "var(--font-sans)", fontWeight: 700, textDecoration: "none", letterSpacing: "0.3px", border: "0.5px solid rgba(255,255,255,0.2)", color: "white" }}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
-            </svg>
-            Instagram
-          </a>
           <a
             href="https://www.linkedin.com/company/groundwork-technology-advisors"
             target="_blank"
