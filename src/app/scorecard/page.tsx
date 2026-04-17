@@ -19,7 +19,7 @@ export default function ScorecardPage() {
             className="text-sm mt-4 max-w-xl leading-relaxed"
             style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
           >
-            Answer 10 questions and get an instant read on where your technology
+            Answer 12 questions and get an instant read on where your technology
             environment stands — and where the gaps are.
           </p>
         </div>

@@ -176,7 +176,7 @@ export default function HomePage() {
               className="text-sm mt-4 leading-relaxed"
               style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)" }}
             >
-              Answer 10 questions about your technology environment and get an
+              Answer 12 questions about your technology environment and get an
               instant read on where you stand and where the gaps are. Takes
               about 3 minutes.
             </p>
@@ -249,7 +249,7 @@ export default function HomePage() {
             </Link>
           </div>
           <p className="text-[11px]" style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.35)", marginTop: "16px", letterSpacing: "0.5px" }}>
-            Jon McAnnis holds the Chief AI Officer certification (AI CERTs) and brings hands-on AI delivery experience across healthcare and behavioral health environments.
+            Jon McAnnis is currently pursuing the Chief AI Officer certification through AI CERTs and brings hands-on AI delivery experience across healthcare and behavioral health environments.
           </p>
         </div>
       </section>
