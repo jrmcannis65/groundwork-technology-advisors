@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 
 const questions = [
@@ -254,6 +254,9 @@ export default function Scorecard() {
   const [formState, setFormState] = useState<FormState>("idle");
   const [assessmentState, setAssessmentState] = useState<AssessmentState>("idle");
   const [assessment, setAssessment] = useState<string>("");
+  const nameRef = useRef<HTMLInputElement>(null);
+  const companyRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
 
   const answeredCount = answers.filter((a) => a !== null).length;
   const allAnswered = answeredCount === TOTAL_QUESTIONS;
@@ -289,7 +292,7 @@ export default function Scorecard() {
     setAssessmentState("loading");
 
     try {
-      const res = await fetch("/api/assessment", {
+      const res = await fetch("/api/assessment/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ answers: answersMap, score: total, maxScore: MAX_SCORE }),
@@ -307,7 +310,6 @@ export default function Scorecard() {
   }
 
   async function handleFormSubmit(
-    e: React.FormEvent<HTMLFormElement>,
     pct: number,
     band: string,
     bandBg: string,
@@ -315,19 +317,61 @@ export default function Scorecard() {
     rec: string,
     concernAreasSummary: string
   ) {
-    e.preventDefault();
     setFormState("submitting");
-    const form = e.currentTarget;
-    const nameVal = (form.querySelector('[name="Full Name"]') as HTMLInputElement).value;
-    const companyVal = (form.querySelector('[name="Company"]') as HTMLInputElement).value;
-    const emailVal = (form.querySelector('[name="Email"]') as HTMLInputElement).value;
+    const nameVal = nameRef.current?.value ?? "";
+    const companyVal = companyRef.current?.value ?? "";
+    const emailVal = emailRef.current?.value ?? "";
 
     const scoreStr = `${pct}%`;
     const gapsIdentified = concernAreasSummary
       ? concernAreasSummary.split(" | ").map((c) => shortLabels[c] || c).join("\n")
       : "None flagged";
 
-    const reportHTML = buildReportHTML(nameVal, companyVal, emailVal, scoreStr, band, bandBg, bandColor, concernAreasSummary, rec);
+    // Use cached assessment from state, or fetch fresh if not yet available
+    let aiText = assessment;
+    console.log("handleFormSubmit: assessment state length", aiText.length);
+    if (!aiText) {
+      console.log("handleFormSubmit: assessment empty, fetching fresh");
+      try {
+        let total = 0;
+        const answersMap: Record<string, string> = {};
+        questions.forEach((q, i) => {
+          if (answers[i] !== null && answers[i] !== undefined) {
+            total += q.opts[answers[i] as number].score;
+            answersMap[`${i + 1}`] = q.opts[answers[i] as number].label;
+          }
+        });
+        const aiRes = await fetch("/api/assessment/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ answers: answersMap, score: total, maxScore: MAX_SCORE }),
+        });
+        console.log("handleFormSubmit: assessment fetch status", aiRes.status);
+        if (aiRes.ok) {
+          const aiData = await aiRes.json();
+          aiText = aiData.assessment ?? "";
+          console.log("handleFormSubmit: fresh assessment length", aiText.length);
+        }
+      } catch (err) {
+        console.log("handleFormSubmit: assessment fetch error", err);
+        // proceed without AI section
+      }
+    }
+
+    const baseHTML = buildReportHTML(nameVal, companyVal, emailVal, scoreStr, band, bandBg, bandColor, concernAreasSummary, rec);
+
+    const aiSectionHtml = aiText
+      ? `<hr style="margin: 32px 0; border-color: #1a3a5c;" />`
+        + `<h2 style="color: #1a3a5c; font-size: 20px; margin-bottom: 16px;">Personalized Assessment</h2>`
+        + `<div style="font-family: Georgia, serif; font-size: 15px; line-height: 1.7; color: #1a1a1a;">`
+        + aiText.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\n\n/g, "<br><br>").replace(/\n/g, "<br>")
+        + `</div>`
+      : "";
+
+    const reportHTML = aiSectionHtml
+      ? baseHTML.replace("</body></html>", aiSectionHtml + "</body></html>")
+      : baseHTML;
+
     const reportBlob = new Blob([reportHTML], { type: "text/html" });
     const safeName = (companyVal || nameVal).replace(/[^a-zA-Z0-9]/g, "-");
     const dateStr = new Date().toISOString().slice(0, 10);
@@ -344,6 +388,7 @@ export default function Scorecard() {
     data.append("Source", "Technology Foundation Scorecard");
     data.append("attachment", reportBlob, fileName);
 
+    console.log("Formspree submission firing", { nameVal, companyVal, aiTextLength: aiText.length });
     try {
       const res = await fetch("https://formspree.io/f/xpqkqjky", {
         method: "POST",
@@ -351,11 +396,14 @@ export default function Scorecard() {
         headers: { Accept: "application/json" },
       });
       if (res.ok) {
+        console.log("Formspree submission complete: success", res.status);
         setFormState("success");
       } else {
+        console.log("Formspree submission complete: error", res.status);
         setFormState("error");
       }
-    } catch {
+    } catch (err) {
+      console.log("Formspree submission complete: caught error", err);
       setFormState("error");
     }
   }
@@ -367,7 +415,9 @@ export default function Scorecard() {
     const strengths: string[] = [];
 
     questions.forEach((q, i) => {
+      if (answers[i] === null || answers[i] === undefined) return;
       const opt = q.opts[answers[i] as number];
+      if (!opt) return;
       total += opt.score;
       if (opt.concern) {
         concerns.push({ section: q.section, text: q.text.split("?")[0] + "?" });
@@ -535,13 +585,14 @@ export default function Scorecard() {
                 Thanks, we will be in touch shortly.
               </div>
             ) : (
-              <form onSubmit={(e) => handleFormSubmit(e, pct, band, bandBg, bandColor, rec, concernAreasSummary)} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <form onSubmit={(e) => e.preventDefault()} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                 {formState === "error" && (
                   <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "#a32d2d", background: "#fcebeb", padding: "8px 10px", borderRadius: "5px" }}>
                     Something went wrong. Please email info@groundworktechnologyadvisors.com directly.
                   </div>
                 )}
                 <input
+                  ref={nameRef}
                   type="text"
                   name="Full Name"
                   placeholder="Your name"
@@ -550,6 +601,7 @@ export default function Scorecard() {
                   style={{ padding: "9px 12px", border: "0.5px solid #c0ccd8", borderRadius: "5px", fontFamily: "var(--font-sans)", background: "white", color: "var(--color-charcoal)" }}
                 />
                 <input
+                  ref={companyRef}
                   type="text"
                   name="Company"
                   placeholder="Company name"
@@ -557,6 +609,7 @@ export default function Scorecard() {
                   style={{ padding: "9px 12px", border: "0.5px solid #c0ccd8", borderRadius: "5px", fontFamily: "var(--font-sans)", background: "white", color: "var(--color-charcoal)" }}
                 />
                 <input
+                  ref={emailRef}
                   type="email"
                   name="Email"
                   placeholder="Email address"
@@ -565,7 +618,8 @@ export default function Scorecard() {
                   style={{ padding: "9px 12px", border: "0.5px solid #c0ccd8", borderRadius: "5px", fontFamily: "var(--font-sans)", background: "white", color: "var(--color-charcoal)" }}
                 />
                 <button
-                  type="submit"
+                  type="button"
+                  onClick={() => handleFormSubmit(pct, band, bandBg, bandColor, rec, concernAreasSummary)}
                   disabled={formState === "submitting"}
                   className="text-sm"
                   style={{ padding: "10px", background: "var(--color-navy)", color: "white", border: "none", borderRadius: "5px", fontFamily: "var(--font-sans)", fontWeight: 700, cursor: "pointer", letterSpacing: "0.3px", opacity: formState === "submitting" ? 0.6 : 1 }}
@@ -675,6 +729,7 @@ export default function Scorecard() {
       {/* Submit */}
       <div style={{ marginTop: "24px", textAlign: "center" }}>
         <button
+          type="button"
           onClick={handleSeeResults}
           className="text-sm"
           style={{ width: "100%", padding: "12px", background: "var(--color-navy)", color: "white", border: "none", borderRadius: "6px", fontFamily: "var(--font-sans)", fontWeight: 600, cursor: allAnswered ? "pointer" : "default", letterSpacing: "0.3px", opacity: allAnswered ? 1 : 0.4, transition: "opacity 0.2s" }}
