@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import CallToAction from "@/components/CallToAction";
+import ChatWidget from "@/components/ChatWidget";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
@@ -314,6 +315,7 @@ export default function HomePage() {
       </section>
 
       <CallToAction />
+      <ChatWidget />
     </>
   );
 }
