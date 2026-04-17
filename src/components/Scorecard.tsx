@@ -190,11 +190,70 @@ function buildReportHTML(
 }
 
 type FormState = "idle" | "submitting" | "success" | "error";
+type AssessmentState = "idle" | "loading" | "success" | "error";
+
+function renderAssessment(text: string) {
+  return text.split("\n\n").map((block, bi) => {
+    const lines = block.split("\n");
+    return (
+      <div key={bi} style={{ marginBottom: "20px" }}>
+        {lines.map((line, li) => {
+          if (!line.trim()) return null;
+          // Section header: entire line is **bold**
+          if (line.startsWith("**") && line.endsWith("**") && line.length > 4) {
+            return (
+              <p
+                key={li}
+                className="text-[11px]"
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 700,
+                  color: "#555",
+                  letterSpacing: "1px",
+                  textTransform: "uppercase",
+                  marginBottom: "6px",
+                }}
+              >
+                {line.slice(2, -2)}
+              </p>
+            );
+          }
+          // Regular text with optional inline **bold**
+          const parts = line.split(/\*\*(.+?)\*\*/g);
+          return (
+            <p
+              key={li}
+              className="text-xs"
+              style={{
+                fontFamily: "var(--font-sans)",
+                color: "var(--color-charcoal)",
+                lineHeight: 1.7,
+                marginBottom: "4px",
+              }}
+            >
+              {parts.map((part, pi) =>
+                pi % 2 === 1 ? (
+                  <strong key={pi} style={{ color: "var(--color-navy)" }}>
+                    {part}
+                  </strong>
+                ) : (
+                  part
+                )
+              )}
+            </p>
+          );
+        })}
+      </div>
+    );
+  });
+}
 
 export default function Scorecard() {
   const [answers, setAnswers] = useState<(number | null)[]>(new Array(TOTAL_QUESTIONS).fill(null));
   const [showResults, setShowResults] = useState(false);
   const [formState, setFormState] = useState<FormState>("idle");
+  const [assessmentState, setAssessmentState] = useState<AssessmentState>("idle");
+  const [assessment, setAssessment] = useState<string>("");
 
   const answeredCount = answers.filter((a) => a !== null).length;
   const allAnswered = answeredCount === TOTAL_QUESTIONS;
@@ -209,6 +268,42 @@ export default function Scorecard() {
     setAnswers(new Array(TOTAL_QUESTIONS).fill(null));
     setShowResults(false);
     setFormState("idle");
+    setAssessmentState("idle");
+    setAssessment("");
+  }
+
+  async function handleSeeResults() {
+    if (!allAnswered) return;
+
+    let total = 0;
+    questions.forEach((q, i) => {
+      total += q.opts[answers[i] as number].score;
+    });
+
+    const answersMap: Record<string, string> = {};
+    questions.forEach((q, i) => {
+      answersMap[`${i + 1}`] = q.opts[answers[i] as number].label;
+    });
+
+    setShowResults(true);
+    setAssessmentState("loading");
+
+    try {
+      const res = await fetch("/api/assessment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers: answersMap, score: total, maxScore: MAX_SCORE }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setAssessment(data.assessment ?? "");
+        setAssessmentState("success");
+      } else {
+        setAssessmentState("error");
+      }
+    } catch {
+      setAssessmentState("error");
+    }
   }
 
   async function handleFormSubmit(
@@ -329,62 +424,102 @@ export default function Scorecard() {
             </div>
           </div>
 
-          {/* Areas to address */}
-          {concerns.length > 0 && (
-            <div style={{ marginBottom: "8px" }}>
-              <div className="text-[11px]" style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "#555", letterSpacing: "1px", textTransform: "uppercase", marginBottom: "8px" }}>
-                Areas to address
-              </div>
-              {concerns.slice(0, 5).map((c, i) => (
-                <div key={i} style={{ display: "flex", gap: "10px", padding: "10px 12px", borderRadius: "6px", marginBottom: "6px", background: "#fff8f6", alignItems: "flex-start" }}>
-                  <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#d85a30", marginTop: "4px", flexShrink: 0 }} />
-                  <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "#712b13", lineHeight: 1.55 }}>
-                    {c.section} — {c.text}
+          {/* AI assessment or fallback */}
+          {assessmentState === "loading" && (
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "20px 0" }}>
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  style={{
+                    width: "7px",
+                    height: "7px",
+                    borderRadius: "50%",
+                    background: "#1a3a5c",
+                    display: "inline-block",
+                    animation: "gta-bounce 1.2s infinite",
+                    animationDelay: `${i * 0.2}s`,
+                  }}
+                />
+              ))}
+              <span className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "var(--color-gray)" }}>
+                Generating your personalized assessment...
+              </span>
+              <style>{`@keyframes gta-bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }`}</style>
+            </div>
+          )}
+
+          {assessmentState === "success" && assessment && (
+            <div style={{ marginTop: "8px" }}>
+              {renderAssessment(assessment)}
+            </div>
+          )}
+
+          {(assessmentState === "error" || assessmentState === "idle") && (
+            <>
+              {assessmentState === "error" && (
+                <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "#666", background: "#f5f7fa", border: "0.5px solid #d0dce8", borderRadius: "6px", padding: "10px 12px", marginBottom: "12px" }}>
+                  Personalized analysis unavailable. Please email{" "}
+                  <a href="mailto:info@groundworktechnologyadvisors.com" style={{ color: "var(--color-blue)" }}>
+                    info@groundworktechnologyadvisors.com
+                  </a>{" "}
+                  for a direct assessment.
+                </div>
+              )}
+
+              {concerns.length > 0 && (
+                <div style={{ marginBottom: "8px" }}>
+                  <div className="text-[11px]" style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "#555", letterSpacing: "1px", textTransform: "uppercase", marginBottom: "8px" }}>
+                    Areas to address
+                  </div>
+                  {concerns.slice(0, 5).map((c, i) => (
+                    <div key={i} style={{ display: "flex", gap: "10px", padding: "10px 12px", borderRadius: "6px", marginBottom: "6px", background: "#fff8f6", alignItems: "flex-start" }}>
+                      <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#d85a30", marginTop: "4px", flexShrink: 0 }} />
+                      <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "#712b13", lineHeight: 1.55 }}>
+                        {c.section} — {c.text}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {uniqueStrengths.length > 0 && (
+                <div style={{ marginTop: "12px", marginBottom: "8px" }}>
+                  <div className="text-[11px]" style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "#555", letterSpacing: "1px", textTransform: "uppercase", marginBottom: "8px" }}>
+                    Strengths
+                  </div>
+                  {uniqueStrengths.map((s, i) => (
+                    <div key={i} style={{ display: "flex", gap: "10px", padding: "10px 12px", borderRadius: "6px", marginBottom: "6px", background: "#eaf3de", alignItems: "flex-start" }}>
+                      <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#3b6d11", marginTop: "4px", flexShrink: 0 }} />
+                      <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "#27500a", lineHeight: 1.55 }}>{s}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {aiConcerns.length > 0 && (
+                <div style={{ marginTop: "10px", padding: "14px 16px", background: "#f0f5fa", borderRadius: "8px", borderLeft: "3px solid var(--color-ltblue)" }}>
+                  <div className="text-[11px]" style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "var(--color-navy)", letterSpacing: "0.5px", textTransform: "uppercase", marginBottom: "6px" }}>
+                    AI readiness gaps identified
+                  </div>
+                  <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "var(--color-navy)", lineHeight: 1.6 }}>
+                    Your responses indicate gaps in AI visibility or governance. An AI Readiness Assessment would give you a clear picture of where AI is already in use, what governance is needed, and where genuine opportunity exists.{" "}
+                    <Link href="/services/#ai-readiness-assessment" className="link-blue">
+                      Learn more about this engagement.
+                    </Link>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              )}
 
-          {/* Strengths */}
-          {uniqueStrengths.length > 0 && (
-            <div style={{ marginTop: "12px", marginBottom: "8px" }}>
-              <div className="text-[11px]" style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "#555", letterSpacing: "1px", textTransform: "uppercase", marginBottom: "8px" }}>
-                Strengths
-              </div>
-              {uniqueStrengths.map((s, i) => (
-                <div key={i} style={{ display: "flex", gap: "10px", padding: "10px 12px", borderRadius: "6px", marginBottom: "6px", background: "#eaf3de", alignItems: "flex-start" }}>
-                  <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#3b6d11", marginTop: "4px", flexShrink: 0 }} />
-                  <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "#27500a", lineHeight: 1.55 }}>{s}</div>
+              <div style={{ marginTop: "16px", padding: "14px 16px", background: "#e8f0f7", borderRadius: "8px", borderLeft: "3px solid var(--color-blue)" }}>
+                <div className="text-[11px]" style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "var(--color-navy)", letterSpacing: "0.5px", textTransform: "uppercase", marginBottom: "6px" }}>
+                  {recTitle}
                 </div>
-              ))}
-            </div>
-          )}
-
-          {/* AI-specific recommendation */}
-          {aiConcerns.length > 0 && (
-            <div style={{ marginTop: "10px", padding: "14px 16px", background: "#f0f5fa", borderRadius: "8px", borderLeft: "3px solid var(--color-ltblue)" }}>
-              <div className="text-[11px]" style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "var(--color-navy)", letterSpacing: "0.5px", textTransform: "uppercase", marginBottom: "6px" }}>
-                AI readiness gaps identified
+                <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "var(--color-navy)", lineHeight: 1.6 }}>
+                  {rec}
+                </div>
               </div>
-              <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "var(--color-navy)", lineHeight: 1.6 }}>
-                Your responses indicate gaps in AI visibility or governance. An AI Readiness Assessment would give you a clear picture of where AI is already in use, what governance is needed, and where genuine opportunity exists.{" "}
-                <Link href="/services/#ai-readiness-assessment" className="link-blue">
-                  Learn more about this engagement.
-                </Link>
-              </div>
-            </div>
+            </>
           )}
-
-          {/* General recommendation */}
-          <div style={{ marginTop: "16px", padding: "14px 16px", background: "#e8f0f7", borderRadius: "8px", borderLeft: "3px solid var(--color-blue)" }}>
-            <div className="text-[11px]" style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "var(--color-navy)", letterSpacing: "0.5px", textTransform: "uppercase", marginBottom: "6px" }}>
-              {recTitle}
-            </div>
-            <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "var(--color-navy)", lineHeight: 1.6 }}>
-              {rec}
-            </div>
-          </div>
 
           {/* Formspree email capture */}
           <div style={{ marginTop: "20px", padding: "20px", background: "#f0f5fa", borderRadius: "8px", border: "0.5px solid #d0dce8" }}>
@@ -540,7 +675,7 @@ export default function Scorecard() {
       {/* Submit */}
       <div style={{ marginTop: "24px", textAlign: "center" }}>
         <button
-          onClick={() => { if (allAnswered) setShowResults(true); }}
+          onClick={handleSeeResults}
           className="text-sm"
           style={{ width: "100%", padding: "12px", background: "var(--color-navy)", color: "white", border: "none", borderRadius: "6px", fontFamily: "var(--font-sans)", fontWeight: 600, cursor: allAnswered ? "pointer" : "default", letterSpacing: "0.3px", opacity: allAnswered ? 1 : 0.4, transition: "opacity 0.2s" }}
         >
