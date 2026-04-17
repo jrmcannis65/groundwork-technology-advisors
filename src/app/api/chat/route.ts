@@ -79,7 +79,8 @@ export async function POST(req: NextRequest) {
     });
 
     if (!response.ok) {
-      console.error("Anthropic API error:", response.status, await response.text());
+      const body = await response.text();
+      console.error(`Anthropic API error: status=${response.status} key_present=${!!process.env.ANTHROPIC_API_KEY} body=${body}`);
       return NextResponse.json({ error: "API request failed." }, { status: 500 });
     }
 
