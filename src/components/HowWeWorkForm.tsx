@@ -63,7 +63,7 @@ export default function HowWeWorkForm() {
               }}
             >
               Every engagement starts with a conversation to make sure the scope
-              is right. No pitch — just an honest discussion about whether there
+              is right. No pitch, just an honest discussion about whether there
               is a useful fit.
             </p>
           </div>

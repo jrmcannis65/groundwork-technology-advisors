@@ -13,15 +13,30 @@ export const metadata: Metadata = generatePageMetadata(
 const proofPoints = [
   {
     label: "M&A technology integration",
-    body: "Led technology due diligence and post-close integration for a multi-entity healthcare acquisition. Scoped the combined environment, identified redundancies and gaps, and produced the integration roadmap that the merged organization used to rationalize systems and consolidate vendors over 18 months.",
+    summary: "Led technology due diligence and post-close integration for a multi-entity healthcare acquisition.",
+    bullets: [
+      "The combined entity had two separate IT organizations, overlapping systems, unresolved vendor contracts, and no shared view of the technology environment across both entities.",
+      "Scoped the combined environment, identified redundancies and gaps, and assessed vendor concentration risk across both organizations.",
+      "Produced the integration roadmap the merged organization used to rationalize systems and consolidate vendors over 18 months.",
+    ],
   },
   {
     label: "SOC 2 Type II readiness",
-    body: "Guided three separate organizations through SOC 2 Type II readiness programs, each starting from an informal security posture. In each case the engagement began with a gap assessment, produced a prioritized remediation plan, and resulted in successful attestation within the agreed timeline.",
+    summary: "Guided three separate organizations through SOC 2 Type II readiness programs, each starting from an informal security posture.",
+    bullets: [
+      "Each organization was starting with no prior audit experience and an unclear picture of where their gaps were relative to the Trust Services Criteria.",
+      "Ran a gap assessment against the applicable criteria, produced a prioritized remediation plan, and managed the readiness process through to audit for each organization.",
+      "Each engagement resulted in successful SOC 2 Type II attestation within the agreed timeline.",
+    ],
   },
   {
     label: "Technology assessment for a growing nonprofit",
-    body: "Conducted a full technology ecosystem assessment for a regional behavioral health organization with 300-plus staff following a major EHR transition. Delivered a landscape document, compliance gap review, executive priorities map, and 18-month roadmap within 90 days. Leadership described it as the first time they had a single, accurate picture of their technology environment.",
+    summary: "Conducted a full technology ecosystem assessment for a regional behavioral health organization with 300-plus staff following a major EHR transition.",
+    bullets: [
+      "Leadership had no consolidated view of the technology environment after the EHR transition and needed a reliable baseline before setting priorities.",
+      "Conducted structured interviews with executive and IT staff, reviewed systems and vendor relationships, and assessed compliance posture across HIPAA and related requirements.",
+      "Delivered a landscape document, compliance gap review, executive priorities map, and 18-month roadmap within 90 days. Leadership described it as the first time they had a single, accurate picture of their technology environment.",
+    ],
   },
 ];
 
@@ -202,7 +217,7 @@ export default function HowWeWorkPage() {
                     fontWeight: 700,
                     color: "var(--color-navy)",
                     lineHeight: 1.35,
-                    marginBottom: "10px",
+                    marginBottom: "8px",
                   }}
                 >
                   {p.label}
@@ -213,10 +228,19 @@ export default function HowWeWorkPage() {
                     fontFamily: "var(--font-sans)",
                     color: "var(--color-gray)",
                     lineHeight: 1.7,
+                    marginBottom: "10px",
                   }}
                 >
-                  {p.body}
+                  {p.summary}
                 </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
+                  {p.bullets.map((b, i) => (
+                    <li key={i} style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
+                      <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "var(--color-blue)", flexShrink: 0, marginTop: "7px" }} />
+                      <span className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "var(--color-gray)", lineHeight: 1.65 }}>{b}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

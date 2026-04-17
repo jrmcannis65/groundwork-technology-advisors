@@ -43,14 +43,16 @@ export default function ServicesPage() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
                 {/* Graphic + title */}
                 <div className="flex flex-col gap-4">
-                  <Image
-                    src={`/assets/brand/services/${service.graphic}`}
-                    alt=""
-                    width={160}
-                    height={160}
-                    style={{ width: "160px", height: "160px", objectFit: "contain" }}
-                    aria-hidden="true"
-                  />
+                  <Link href={`/articles/${service.articleSlug}/`} style={{ cursor: "pointer" }}>
+                    <Image
+                      src={`/assets/brand/services/${service.graphic}`}
+                      alt=""
+                      width={160}
+                      height={160}
+                      style={{ width: "160px", height: "160px", objectFit: "contain" }}
+                      aria-hidden="true"
+                    />
+                  </Link>
                   <h2 className="text-sm">{service.title}</h2>
                 </div>
 
@@ -79,6 +81,120 @@ export default function ServicesPage() {
                       Further reading &rarr;
                     </Link>
                   </div>
+
+                  {service.id === "technology-ecosystem-assessment" && (
+                    <div style={{ marginTop: "8px" }}>
+                      <p className="section-label mb-3">What this engagement delivers</p>
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {[
+                          "A written inventory of every system in use, how it connects, and what the organization does and does not control",
+                          "A vendor relationship review covering contracts, concentration risk, and performance gaps",
+                          "A technical debt assessment with observations on what is slowing delivery or creating operational risk",
+                          "A prioritized findings document organized by what matters most, not by category",
+                        ].map((item, i) => (
+                          <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-blue)", flexShrink: 0, marginTop: "8px" }} />
+                            <span className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", lineHeight: 1.65 }}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {service.id === "engineering-organization-assessment" && (
+                    <div style={{ marginTop: "8px" }}>
+                      <p className="section-label mb-3">What this engagement delivers</p>
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {[
+                          "A structured review of team composition, role clarity, and capacity relative to current demands",
+                          "An assessment of delivery practices including sprint planning, Agile maturity, and CI/CD pipeline health",
+                          "Specific observations on what is working, what is not, and what changes would have the most impact",
+                          "A written recommendations document the leadership team can act on without an engineering background",
+                        ].map((item, i) => (
+                          <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-blue)", flexShrink: 0, marginTop: "8px" }} />
+                            <span className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", lineHeight: 1.65 }}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {service.id === "technology-role-organizational-design" && (
+                    <div style={{ marginTop: "8px" }}>
+                      <p className="section-label mb-3">What this engagement delivers</p>
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {[
+                          "A review of the current technology org structure and where it does not match the company's current stage",
+                          "Role definitions and reporting structure recommendations specific to the company's situation",
+                          "A hiring profile for any technology leadership role the company needs to fill next",
+                          "Guidance on what to look for in candidates that is grounded in the company's actual environment",
+                        ].map((item, i) => (
+                          <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-blue)", flexShrink: 0, marginTop: "8px" }} />
+                            <span className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", lineHeight: 1.65 }}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {service.id === "security-compliance-readiness" && (
+                    <div style={{ marginTop: "8px" }}>
+                      <p className="section-label mb-3">What this engagement delivers</p>
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {[
+                          "A gap inventory against the applicable framework, SOC 2, HIPAA, or NIST, with findings organized by severity",
+                          "An honest assessment of what it would take to get audit ready and how long it would realistically take",
+                          "A prioritized remediation list the leadership team can use to assign ownership and track progress",
+                          "A written deliverable leadership can share with auditors, insurers, or board members as evidence of active remediation",
+                        ].map((item, i) => (
+                          <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-blue)", flexShrink: 0, marginTop: "8px" }} />
+                            <span className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", lineHeight: 1.65 }}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {service.id === "fractional-cio-cto-services" && (
+                    <div style={{ marginTop: "8px" }}>
+                      <p className="section-label mb-3">What this engagement delivers</p>
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {[
+                          "Senior technology leadership available one to two days per week without a full-time executive salary",
+                          "Ongoing ownership of technology strategy, vendor relationships, and engineering team direction",
+                          "A senior technology voice in leadership meetings, board conversations, and key vendor negotiations",
+                          "Continuity of technology direction during a leadership transition or gap",
+                        ].map((item, i) => (
+                          <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-blue)", flexShrink: 0, marginTop: "8px" }} />
+                            <span className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", lineHeight: 1.65 }}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {service.id === "technology-roadmap-development" && (
+                    <div style={{ marginTop: "8px" }}>
+                      <p className="section-label mb-3">What this engagement delivers</p>
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {[
+                          "Structured stakeholder conversations with each executive to surface what they actually need from technology",
+                          "A prioritized technology investment plan organized into near-term actions and longer-term initiatives",
+                          "A phased roadmap document the existing team can execute against without outside help",
+                          "Alignment across leadership on technology priorities, ending the recurring debate about where to focus",
+                        ].map((item, i) => (
+                          <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-blue)", flexShrink: 0, marginTop: "8px" }} />
+                            <span className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", lineHeight: 1.65 }}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
                   {service.id === "ai-readiness-assessment" && (
                     <>
