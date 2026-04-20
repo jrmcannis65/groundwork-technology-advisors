@@ -61,8 +61,11 @@ const industryOptions = [
   "Health Insurance",
   "Behavioral Health",
   "Clinical Services",
+  "Insurance",
+  "Insurtech",
+  "Financial Services",
+  "Consumer Products and Platforms",
   "Regulated SaaS",
-  "Other",
 ];
 
 const inputStyle: React.CSSProperties = {
@@ -218,13 +221,13 @@ export default function JdAnalyzer() {
                 </div>
 
                 {/* CTA */}
-                <div style={{ marginTop: "20px", padding: "16px 20px", background: "#e8f0f7", borderRadius: "8px", borderLeft: "3px solid var(--color-blue)" }}>
-                  <p className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-navy)", margin: 0, lineHeight: 1.6 }}>
-                    Want help defining this role before you search?{" "}
-                    <Link href="/contact/" className="link-blue" style={{ fontWeight: 600 }}>
-                      Get in touch.
-                    </Link>
+                <div style={{ marginTop: "28px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px" }}>
+                  <p className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", margin: 0, lineHeight: 1.6 }}>
+                    Want to talk through this in more detail? Reach out directly.
                   </p>
+                  <Link href="/contact/" className="btn-primary">
+                    Contact Us
+                  </Link>
                 </div>
               </div>
             )}

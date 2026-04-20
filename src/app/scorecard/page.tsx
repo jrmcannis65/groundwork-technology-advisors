@@ -20,7 +20,7 @@ export default function ScorecardPage() {
             style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
           >
             Answer 12 questions and get an instant read on where your technology
-            environment stands — and where the gaps are.
+            environment stands and where the gaps are.
           </p>
         </div>
       </section>

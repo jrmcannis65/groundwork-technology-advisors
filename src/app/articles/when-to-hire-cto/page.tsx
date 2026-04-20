@@ -93,8 +93,8 @@ export default function WhenToHireCTOPage() {
         regulated environment needs someone with that specific background.
       </ArticleP>
       <ArticleP>
-        The mistake is hiring for a generic CTO profile — the best resume rather
-        than the best fit — and discovering after six months that the person is
+        The mistake is hiring for a generic CTO profile, the best resume rather
+        than the best fit, and discovering after six months that the person is
         excellent at things the company does not need and weak at things it does.
       </ArticleP>
 

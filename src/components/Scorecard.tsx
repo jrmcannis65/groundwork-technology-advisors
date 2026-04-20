@@ -478,7 +478,7 @@ export default function Scorecard() {
       bandBg = "#fcebeb";
       bandColor = "#a32d2d";
       recTitle = "Where Groundwork can help";
-      rec = "Your technology environment has significant gaps that are likely already affecting your ability to execute. A structured assessment is the right first step — it gives leadership a shared, honest picture and a practical roadmap before investing in fixes.";
+      rec = "Your technology environment has significant gaps that are likely already affecting your ability to execute. A structured assessment is the right first step. It gives leadership a shared, honest picture and a practical roadmap before investing in fixes.";
     }
 
     const concernAreasSummary = concerns.map((c) => `${c.section}: ${c.text}`).join(" | ");
@@ -534,7 +534,7 @@ export default function Scorecard() {
                     <div key={i} style={{ display: "flex", gap: "10px", padding: "10px 12px", borderRadius: "6px", marginBottom: "6px", background: "#fff8f6", alignItems: "flex-start" }}>
                       <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#d85a30", marginTop: "4px", flexShrink: 0 }} />
                       <div className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "#712b13", lineHeight: 1.55 }}>
-                        {c.section} — {c.text}
+                        {c.section}: {c.text}
                       </div>
                     </div>
                   ))}
