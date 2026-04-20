@@ -65,6 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: "https://www.groundworktechnologyadvisors.com/soc2-checklist",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: "https://www.groundworktechnologyadvisors.com/articles/fractional-cio",
       lastModified: new Date(),
       changeFrequency: "monthly",

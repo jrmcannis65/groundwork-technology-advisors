@@ -54,8 +54,8 @@ export const services: Service[] = [
     shortDescription:
       "A practical review of your posture against SOC 2, HIPAA, or NIST requirements. Delivered as a gap inventory with a prioritized list of recommended next steps.",
     fullDescription: [
-      "A review of a company's current posture against SOC 2, HIPAA, or NIST requirements depending on what applies to the business. Delivered as a gap inventory with a prioritized list of recommended next steps.",
-      "This is not a formal audit and does not produce a compliance certification. It is a practical assessment of where the company stands and what it would take to get audit ready. For companies that have never been through a formal compliance process, this engagement provides a realistic picture of the effort involved and where to focus first.",
+      "A practical review of your security and compliance posture against SOC 2, HIPAA, NIST, or other frameworks relevant to your industry. Delivered as a gap inventory with prioritized next steps.",
+      "Useful for companies preparing for an attestation cycle, responding to customer security questionnaires, or tightening posture after a compliance or security event. Common across healthcare, insurance, financial services, and regulated SaaS.",
     ],
     icon: "M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z",
     graphic: "svc_security.svg",
@@ -67,8 +67,8 @@ export const services: Service[] = [
     shortDescription:
       "Part-time senior technology leadership on a monthly retainer for companies that are not ready for a full-time executive hire.",
     fullDescription: [
-      "Part-time senior technology leadership on a monthly retainer for companies that are not ready for a full-time executive hire. The scope is defined at the start of each engagement based on what the company actually needs, which varies considerably depending on team size, growth stage, and current challenges.",
-      "Typically structured at one to two days per week. Some clients need help managing an existing team and setting direction. Others need a senior technology voice in leadership conversations or board meetings. Others are in the middle of a technology transition and need consistent oversight until it is complete. The engagement model is flexible by design because the needs are rarely identical.",
+      "Part-time senior technology leadership on a monthly retainer, typically one to two days per week. Useful for companies that need a seasoned technology executive guiding strategy, engineering delivery, vendor decisions, and security posture without the cost of a full-time hire.",
+      "My fractional clients typically come from healthcare, insurance, financial services, and consumer products and platforms, usually in the 50 to 500 employee range.",
     ],
     icon: "M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z",
     graphic: "svc_fractional.svg",

@@ -53,9 +53,10 @@ export default function AboutPage() {
             style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
           >
             Groundwork Technology Advisors is a technology consulting firm
-            founded by a senior technology executive with 30 years of experience
-            leading IT and engineering organizations across healthcare services,
-            health insurance, behavioral health, and digital product companies.
+            founded by Jon McAnnis, a technology executive with 30 years of
+            experience leading IT and engineering organizations across
+            healthcare, insurance, financial services, and consumer products
+            and platforms.
           </p>
         </div>
       </section>
@@ -68,24 +69,28 @@ export default function AboutPage() {
             style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)" }}
           >
             <p>
-              Groundwork Technology Advisors was founded by Jon McAnnis, a technology executive based in eastern Washington with 30 years of experience leading IT and engineering organizations.
+              Groundwork Technology Advisors was founded by Jon McAnnis, a
+              technology executive based in eastern Washington with 30 years of
+              experience leading IT and engineering organizations. Across his
+              career, Jon has served as CIO or CTO at eight organizations and
+              has run technology functions ranging from 20 to 300 people.
             </p>
             <p>
-              The firm's principal has served as CIO or CTO at eight
-              organizations over a 30-year career, with engineering and
-              technology teams ranging from 20 to 300 people. That experience
-              spans a 55-site urgent and primary care system, a Medicare
-              Advantage and Medicaid insurance company with approximately $2 to
-              $3 billion in revenue, a behavioral health technology company
-              serving employer clients, and several earlier-stage digital product
-              and healthcare services companies.
+              His deepest expertise is in healthcare and insurance, where he
+              has held CIO and CTO roles at Providence Health Plans, Optum
+              International, Western Reliance, ZoomCare, Humankind, and CMD.
+              He has also led technology in financial services and consumer
+              products and platforms, giving him a practical view of what works
+              and what does not in environments where trust and reliability are
+              table stakes.
             </p>
             <p>
-              Across those roles, the work has included building technology
-              organizations from scratch, restructuring teams that were
-              underperforming, leading technology due diligence and
-              post-acquisition integration, and maintaining compliance in
-              heavily regulated clinical and insurance environments.
+              Groundwork Technology Advisors exists to bring that experience to
+              small and mid-size companies that need senior technology leadership
+              without the cost of a full-time hire. The practice is deliberately
+              focused on assessment, organizational design, security and
+              compliance readiness, and fractional leadership engagements where
+              a seasoned practitioner can deliver meaningful impact quickly.
             </p>
             <p>
               Credentials include CHIME certification as a Healthcare CIO,

@@ -38,9 +38,20 @@ export default function HomePage() {
               className="text-sm leading-relaxed max-w-2xl"
               style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
             >
-              Groundwork Technology Advisors helps small and mid-size companies
-              understand their technology environment, strengthen their
-              engineering practices, and build a clear path forward.
+              Fractional CIO and CTO leadership for companies where trust, data
+              sensitivity, and operational reliability matter. Deepest experience
+              in healthcare and insurance, with adjacent work in financial
+              services and consumer products and platforms.
+            </p>
+            <p
+              className="text-sm leading-relaxed max-w-2xl mt-4"
+              style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.6)" }}
+            >
+              I work with small and mid-size companies that need senior
+              technology leadership without the cost of a full-time hire. My
+              engagements are focused, scoped, and grounded in 30 years of
+              experience running technology in regulated and high-trust
+              environments.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link href="/contact/" className="btn-primary">
@@ -66,18 +77,15 @@ export default function HomePage() {
                 style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)" }}
               >
                 <p>
-                  Groundwork Technology Advisors is led by a senior technology
-                  executive with 30 years of experience across healthcare
-                  services, health insurance, digital product companies, and
-                  behavioral health organizations, including CIO and CTO roles
-                  at eight organizations.
-                </p>
-                <p>
-                  Many small and mid-size companies are making technology
-                  decisions without a clear picture of where they stand or where
-                  they are going. An experienced outside perspective can help
-                  clarify both, without the overhead of a full-time executive
-                  hire.
+                  Groundwork Technology Advisors is led by Jon McAnnis, a
+                  technology executive with 30 years of experience leading
+                  engineering, platform, and product organizations across
+                  healthcare, insurance, financial services, and consumer
+                  products and platforms. He has served as CIO or CTO at eight
+                  organizations and has led post-acquisition technology
+                  integration, SOC 2 and HIPAA compliance programs, cloud
+                  migrations, and cybersecurity governance in regulated
+                  environments.
                 </p>
               </div>
               <Link href="/about/" className="link-blue inline-block mt-6 text-sm font-medium">

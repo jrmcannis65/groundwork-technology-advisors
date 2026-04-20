@@ -23,10 +23,12 @@ export default function ServicesPage() {
             className="text-sm mt-4 max-w-2xl leading-relaxed"
             style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
           >
-            Each engagement is scoped to a specific outcome. The work focuses on
-            delivering something useful: a written assessment, a practical
-            roadmap, or consistent senior leadership. Not a long-term
-            dependency.
+            Every engagement is fixed-scope and fixed-fee. You know the
+            deliverable and the cost before work starts. Engagements typically
+            run three to twelve weeks depending on scope. Below is what I offer
+            most often, with the understanding that every client situation is
+            different and scope is always defined together before anything
+            begins.
           </p>
         </div>
       </section>
@@ -165,9 +167,12 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
-                      <div style={{ marginTop: "16px" }}>
+                      <div style={{ marginTop: "16px", display: "flex", flexDirection: "column", gap: "10px" }}>
                         <Link href="/vendor-assessment/" className="link-blue text-xs font-medium" style={{ fontFamily: "var(--font-sans)" }}>
                           Generate vendor security questions &rarr;
+                        </Link>
+                        <Link href="/soc2-checklist/" className="link-blue text-xs font-medium" style={{ fontFamily: "var(--font-sans)" }}>
+                          Get a personalized SOC 2 readiness checklist &rarr;
                         </Link>
                       </div>
                     </div>
