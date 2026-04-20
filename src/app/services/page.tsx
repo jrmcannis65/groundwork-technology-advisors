@@ -98,6 +98,11 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
+                      <div style={{ marginTop: "16px" }}>
+                        <Link href="/vendor-assessment/" className="link-blue text-xs font-medium" style={{ fontFamily: "var(--font-sans)" }}>
+                          Generate vendor evaluation questions &rarr;
+                        </Link>
+                      </div>
                     </div>
                   )}
 
@@ -136,6 +141,11 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
+                      <div style={{ marginTop: "16px" }}>
+                        <Link href="/jd-analyzer/" className="link-blue text-xs font-medium" style={{ fontFamily: "var(--font-sans)" }}>
+                          Analyze a Director or VP level technology role before you search &rarr;
+                        </Link>
+                      </div>
                     </div>
                   )}
 
@@ -155,6 +165,11 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
+                      <div style={{ marginTop: "16px" }}>
+                        <Link href="/vendor-assessment/" className="link-blue text-xs font-medium" style={{ fontFamily: "var(--font-sans)" }}>
+                          Generate vendor security questions &rarr;
+                        </Link>
+                      </div>
                     </div>
                   )}
 
@@ -238,10 +253,27 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      <CallToAction
-        heading="Not sure which service fits your situation?"
-        body="Most engagements start with a brief conversation to make sure the scope is appropriate before any work or fees are committed. Reach out to discuss what you're working on."
-      />
+      <section style={{ backgroundColor: "var(--color-navy)" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div style={{ maxWidth: "560px" }}>
+            <h2 style={{ color: "white" }}>Not sure which service fits your situation?</h2>
+            <p
+              className="text-sm mt-4 leading-relaxed"
+              style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)" }}
+            >
+              Most engagements start with a brief conversation to make sure the scope is appropriate before any work or fees are committed. Or describe your challenge and get a specific recommendation in about 3 minutes.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
+              <Link href="/contact/" className="btn-primary">
+                Get in touch
+              </Link>
+              <Link href="/diagnostic/" className="btn-hero-outline">
+                Try the Problem Diagnostic
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

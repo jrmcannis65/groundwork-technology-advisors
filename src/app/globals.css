@@ -113,6 +113,23 @@ h3 {
   color: white;
 }
 
+.btn-outline-navy {
+  display: inline-block;
+  border: 1.5px solid var(--color-navy);
+  color: var(--color-navy);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  transition: background-color 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.btn-outline-navy:hover {
+  background-color: var(--color-navy);
+  color: white;
+}
+
 /* ── Nav links ────────────────────────────────────────── */
 .nav-link {
   color: rgba(255, 255, 255, 0.8);

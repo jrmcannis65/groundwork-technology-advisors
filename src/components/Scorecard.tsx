@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import Link from "next/link";
+import LoadingIndicator from "@/components/LoadingIndicator";
 
 const questions = [
   {
@@ -254,6 +255,7 @@ export default function Scorecard() {
   const [formState, setFormState] = useState<FormState>("idle");
   const [assessmentState, setAssessmentState] = useState<AssessmentState>("idle");
   const [assessment, setAssessment] = useState<string>("");
+  const [emailDelivered, setEmailDelivered] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
   const companyRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -273,6 +275,7 @@ export default function Scorecard() {
     setFormState("idle");
     setAssessmentState("idle");
     setAssessment("");
+    setEmailDelivered(false);
   }
 
   async function handleSeeResults() {
@@ -329,9 +332,7 @@ export default function Scorecard() {
 
     // Use cached assessment from state, or fetch fresh if not yet available
     let aiText = assessment;
-    console.log("handleFormSubmit: assessment state length", aiText.length);
     if (!aiText) {
-      console.log("handleFormSubmit: assessment empty, fetching fresh");
       try {
         let total = 0;
         const answersMap: Record<string, string> = {};
@@ -346,16 +347,47 @@ export default function Scorecard() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ answers: answersMap, score: total, maxScore: MAX_SCORE }),
         });
-        console.log("handleFormSubmit: assessment fetch status", aiRes.status);
         if (aiRes.ok) {
           const aiData = await aiRes.json();
           aiText = aiData.assessment ?? "";
-          console.log("handleFormSubmit: fresh assessment length", aiText.length);
         }
-      } catch (err) {
-        console.log("handleFormSubmit: assessment fetch error", err);
+      } catch {
         // proceed without AI section
       }
+    }
+
+    // Send visitor results email via Resend, with one retry on failure
+    let delivered = false;
+    if (emailVal && aiText) {
+      const sendResultsPayload = JSON.stringify({
+        name: nameVal,
+        email: emailVal,
+        score: Math.round((pct / 100) * MAX_SCORE),
+        maxScore: MAX_SCORE,
+        band,
+        assessment: aiText,
+      });
+
+      async function attemptSend(): Promise<boolean> {
+        try {
+          const r = await fetch("/api/send-results/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: sendResultsPayload,
+          });
+          const d = await r.json();
+          return d.ok === true;
+        } catch {
+          return false;
+        }
+      }
+
+      delivered = await attemptSend();
+      if (!delivered) {
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        delivered = await attemptSend();
+      }
+      setEmailDelivered(delivered);
     }
 
     const baseHTML = buildReportHTML(nameVal, companyVal, emailVal, scoreStr, band, bandBg, bandColor, concernAreasSummary, rec);
@@ -386,9 +418,10 @@ export default function Scorecard() {
     data.append("Result", band);
     data.append("Gaps Identified", gapsIdentified);
     data.append("Source", "Technology Foundation Scorecard");
+    data.append("email_delivered", delivered ? "yes" : "no");
+    data.append("assessment_text", aiText || "Not available");
     data.append("attachment", reportBlob, fileName);
 
-    console.log("Formspree submission firing", { nameVal, companyVal, aiTextLength: aiText.length });
     try {
       const res = await fetch("https://formspree.io/f/xpqkqjky", {
         method: "POST",
@@ -396,14 +429,11 @@ export default function Scorecard() {
         headers: { Accept: "application/json" },
       });
       if (res.ok) {
-        console.log("Formspree submission complete: success", res.status);
         setFormState("success");
       } else {
-        console.log("Formspree submission complete: error", res.status);
         setFormState("error");
       }
-    } catch (err) {
-      console.log("Formspree submission complete: caught error", err);
+    } catch {
       setFormState("error");
     }
   }
@@ -475,28 +505,7 @@ export default function Scorecard() {
           </div>
 
           {/* AI assessment or fallback */}
-          {assessmentState === "loading" && (
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "20px 0" }}>
-              {[0, 1, 2].map((i) => (
-                <span
-                  key={i}
-                  style={{
-                    width: "7px",
-                    height: "7px",
-                    borderRadius: "50%",
-                    background: "#1a3a5c",
-                    display: "inline-block",
-                    animation: "gta-bounce 1.2s infinite",
-                    animationDelay: `${i * 0.2}s`,
-                  }}
-                />
-              ))}
-              <span className="text-xs" style={{ fontFamily: "var(--font-sans)", color: "var(--color-gray)" }}>
-                Generating your personalized assessment...
-              </span>
-              <style>{`@keyframes gta-bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }`}</style>
-            </div>
-          )}
+          <LoadingIndicator message="Generating your personalized assessment..." visible={assessmentState === "loading"} />
 
           {assessmentState === "success" && assessment && (
             <div style={{ marginTop: "8px" }}>
