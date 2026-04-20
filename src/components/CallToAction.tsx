@@ -22,7 +22,7 @@ export default function CallToAction({
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
-            <Link href="/contact/" className="btn-primary">
+            <Link href="/contact/?source=home" className="btn-primary">
               Get in touch
             </Link>
             <div

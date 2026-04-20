@@ -269,7 +269,7 @@ export default function ServicesPage() {
               Most engagements start with a brief conversation to make sure the scope is appropriate before any work or fees are committed. Or describe your challenge and get a specific recommendation in about 3 minutes.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
-              <Link href="/contact/" className="btn-primary">
+              <Link href="/contact/?source=home" className="btn-primary">
                 Get in touch
               </Link>
               <Link href="/diagnostic/" className="btn-hero-outline">

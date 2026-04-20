@@ -192,7 +192,7 @@ export default function DiagnosticTool() {
                 <p className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-navy)", margin: 0, lineHeight: 1.5 }}>
                   Ready to talk through your situation?
                 </p>
-                <Link href="/contact/" className="btn-primary" style={{ flexShrink: 0 }}>
+                <Link href="/contact/?source=home" className="btn-primary" style={{ flexShrink: 0 }}>
                   Get in touch
                 </Link>
               </div>

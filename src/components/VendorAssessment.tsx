@@ -254,7 +254,7 @@ export default function VendorAssessment() {
                   <p className="text-sm" style={{ fontFamily: "var(--font-sans)", color: "var(--color-charcoal)", margin: 0, lineHeight: 1.6 }}>
                     Want to talk through this in more detail? Reach out directly.
                   </p>
-                  <Link href="/contact/" className="btn-primary">
+                  <Link href="/contact/?source=vendor-assessment" className="btn-primary">
                     Contact Us
                   </Link>
                 </div>

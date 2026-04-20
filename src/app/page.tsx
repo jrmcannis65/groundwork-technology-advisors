@@ -54,7 +54,7 @@ export default function HomePage() {
               environments.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link href="/contact/" className="btn-primary">
+              <Link href="/contact/?source=home" className="btn-primary">
                 Get in touch
               </Link>
               <Link href="/scorecard/" className="btn-hero-outline">

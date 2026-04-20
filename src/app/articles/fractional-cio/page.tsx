@@ -146,7 +146,7 @@ export default function FractionalCIOPage() {
         engagement model can deliver.
       </ArticleP>
 
-      <ArticleCTA href="/contact/">
+      <ArticleCTA href="/contact/?source=fractional">
         Get in touch to discuss whether a fractional CIO engagement is the right fit
       </ArticleCTA>
       <ArticleAuthor />

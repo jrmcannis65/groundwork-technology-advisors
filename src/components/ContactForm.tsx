@@ -1,15 +1,43 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 
-// Replace YOUR_FORM_ID with your Formspree form ID after registering at formspree.io
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xaqanajg";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
+const SOURCE_OPTIONS = [
+  "General inquiry",
+  "Technology Foundation Scorecard results",
+  "Vendor Security Assessment",
+  "Technology Leadership Role Analyzer",
+  "SOC 2 Readiness Checklist",
+  "Fractional CIO or CTO engagement",
+  "Technology Ecosystem Assessment",
+  "Something else",
+] as const;
+
+const SOURCE_MAP: Record<string, string> = {
+  scorecard: "Technology Foundation Scorecard results",
+  "vendor-assessment": "Vendor Security Assessment",
+  "jd-analyzer": "Technology Leadership Role Analyzer",
+  "soc2-checklist": "SOC 2 Readiness Checklist",
+  fractional: "Fractional CIO or CTO engagement",
+  "ecosystem-assessment": "Technology Ecosystem Assessment",
+  testimonials: "General inquiry",
+  home: "General inquiry",
+};
+
 export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [source, setSource] = useState("General inquiry");
+
+  useEffect(() => {
+    const param = new URLSearchParams(window.location.search).get("source") ?? "";
+    const mapped = SOURCE_MAP[param];
+    if (mapped) setSource(mapped);
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,6 +46,10 @@ export default function ContactForm() {
 
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    const personName = (data.get("name") as string) ?? "";
+    const sourceName = (data.get("source") as string) ?? "General inquiry";
+    data.set("_subject", `New inquiry: ${sourceName} \u2014 from ${personName}`);
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -29,6 +61,7 @@ export default function ContactForm() {
       if (response.ok) {
         setState("success");
         form.reset();
+        setSource("General inquiry");
       } else {
         const json = await response.json().catch(() => ({}));
         setErrorMessage(
@@ -132,6 +165,25 @@ export default function ContactForm() {
             className={inputClass}
           />
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="source" className={labelClass}>
+          What is this about? <span className="text-slate">*</span>
+        </label>
+        <select
+          id="source"
+          name="source"
+          required
+          value={source}
+          onChange={(e) => setSource(e.target.value)}
+          className={inputClass}
+          style={{ cursor: "pointer" }}
+        >
+          {SOURCE_OPTIONS.map((opt) => (
+            <option key={opt} value={opt}>{opt}</option>
+          ))}
+        </select>
       </div>
 
       <div>

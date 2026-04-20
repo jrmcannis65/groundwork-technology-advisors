@@ -99,7 +99,7 @@ function buildEmailHtml(
             <table role="presentation" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="background:#1a3a5c;border-radius:5px;">
-                  <a href="https://groundworktechnologyadvisors.com/contact" style="display:inline-block;padding:11px 28px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:600;color:white;text-decoration:none;letter-spacing:0.3px;">Book a Conversation</a>
+                  <a href="https://groundworktechnologyadvisors.com/contact?source=scorecard" style="display:inline-block;padding:11px 28px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:600;color:white;text-decoration:none;letter-spacing:0.3px;">Book a Conversation</a>
                 </td>
               </tr>
             </table>
